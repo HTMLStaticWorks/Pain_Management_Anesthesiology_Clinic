@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Medical Shield Outer Frame -->
+  <rect x="10" y="10" width="80" height="80" rx="24" fill="url(#brandGrad)" />
+  <rect x="12" y="12" width="76" height="76" rx="22" stroke="#2DD4BF" stroke-width="2" stroke-opacity="0.5" />
+  
+  <!-- Interventional Medical Cross -->
+  <path d="M43 28 H57 V43 H72 V57 H57 V72 H43 V57 H28 V43 H43 Z" fill="#FFFFFF" />
+  
+  <!-- Pain Relief Pulse Wave Line -->
+  <path d="M20 50 H36 L42 38 L48 62 L54 44 L60 54 L66 50 H80" stroke="#0D9488" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M20 50 H36 L42 38 L48 62 L54 44 L60 54 L66 50 H80" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <defs>
+    <linearGradient id="brandGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ApexPain Management & Anesthesiology Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#081018',
+            cardbg1: '#0D1B2A',
+            cardbg2: '#132337',
+            primary: '#0D9488',
+            secondary: '#0284C7',
+            accent: '#14B8A6',
+            violet: {
+              400: '#0D9488',
+              500: '#0F766E',
+              600: '#0284C7',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <style>
+    /* Premium SaaS Dashboard overrides */
+    .sidebar-link.active {
+      background-color: rgba(13, 148, 136, 0.15);
+      border-left: 2px solid #0D9488;
+      color: #0D9488;
+    }
+
+    .neon-glow-border {
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-[#081018] text-[#F8FAFC] h-screen overflow-hidden flex flex-col lg:flex-row">
+
+  <!-- Sidebar Navigation (Desktop) - Single Word Labels -->
+  <aside
+    class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 p-6 justify-between shrink-0 sticky top-0 h-screen overflow-y-auto">
+    <div class="space-y-8 flex flex-col flex-1">
+      <div class="flex justify-between items-center">
+        <a class="brand-logo flex items-center gap-2 text-lg" href="index.html">
+          <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+          <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+        </a>
+      </div>
+
+      <!-- Navigation Links (Single Word) -->
+      <nav class="space-y-1 flex-1">
+        <button onclick="showSection('overview')" id="nav-overview"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all active">
+          <i class="fa-solid fa-chart-pie w-4 text-[#0D9488]"></i> Overview
+        </button>
+        <button onclick="showSection('progress')" id="nav-progress"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-calendar-check w-4 text-[#0284C7]"></i> Appointments
+        </button>
+        <button onclick="showSection('log')" id="nav-log"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-book-medical w-4 text-[#14B8A6]"></i> Journal
+        </button>
+        <button onclick="showSection('achievements')" id="nav-achievements"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-clipboard-check w-4 text-[#0D9488]"></i> Treatments
+        </button>
+        <button onclick="showSection('routes')" id="nav-routes"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-pills w-4 text-[#0284C7]"></i> Medications
+        </button>
+        <button onclick="showSection('bookings')" id="nav-bookings"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-user-doctor w-4 text-[#14B8A6]"></i> Consult
+        </button>
+        <button onclick="showSection('events')" id="nav-events"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-id-card w-4 text-[#0D9488]"></i> Records
+        </button>
+        <button onclick="showSection('membership')" id="nav-membership"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-credit-card w-4 text-[#0284C7]"></i> Billing
+        </button>
+        <button onclick="showSection('profile')" id="nav-profile"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#94A3B8] hover:text-white transition-all">
+          <i class="fa-solid fa-circle-user w-4 text-[#94A3B8]"></i> Settings
+        </button>
+      </nav>
+    </div>
+
+    <!-- Patient Section footer -->
+    <div class="flex items-center gap-3 border-t border-gray-900 pt-4">
+      <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#0D9488]/40 shrink-0">
+        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Sarah Jenkins"
+          class="w-full h-full object-cover object-top">
+      </div>
+      <div>
+        <p class="text-xs font-heading">Sarah Jenkins</p>
+        <p class="text-[9px] text-[#0D9488]">Patient ID: #PX-8942</p>
+        <a href="index.html"
+          class="inline-flex items-center gap-1 text-[10px] font-medium text-white bg-red-500/80 hover:bg-red-500 px-2 py-0.5 rounded-md transition-colors mt-1 text-decoration-none">
+          <i class="fa-solid fa-right-from-bracket text-[9px]"></i> Log Out
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Right Panel Content Wrapper -->
+  <div class="flex-1 flex flex-col h-full max-h-full overflow-hidden">
+    <!-- Top Header Bar -->
+    <header
+      class="w-full glass-panel border-b border-gray-900 px-4 md:px-6 py-4 flex justify-between items-center bg-[#081018]/40 backdrop-blur-md sticky top-0 z-30">
+      <!-- Left side -->
+      <div class="flex items-center gap-3">
+        <!-- Mobile Toggle (Hamburger Button) -->
+        <button class="lg:hidden text-[#F8FAFC] text-xl" id="mobile-menu-btn" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <!-- Mobile Brand Logo -->
+        <a class="brand-logo lg:hidden flex items-center gap-2" href="index.html">
+          <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+          <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+        </a>
+        <!-- Desktop Welcome Message -->
+        <div class="hidden lg:block">
+          <h2 class="text-base md:text-lg font-heading text-[#F8FAFC] m-0">Welcome Back, Sarah</h2>
+          <p class="text-[10px] text-[#94A3B8] m-0">ApexPain Patient Care & Anesthesiology Portal</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle Switch Button -->
+        <button id="theme-toggle" class="hidden lg:inline-flex header-theme-switch" title="Toggle Theme">
+          <span class="track-icons flex justify-between items-center text-xs select-none w-full">
+            <i class="fa-regular fa-moon text-sky-400 text-xs opacity-75"></i>
+            <i class="fa-regular fa-sun text-amber-400 text-xs opacity-75"></i>
+          </span>
+          <span id="header-theme-thumb">
+            <i id="theme-icon" class="fa-regular fa-sun text-white"></i>
+          </span>
+        </button>
+
+        <!-- RTL/LTR Toggle Button -->
+        <button id="rtl-toggle" class="hidden lg:flex w-[38px] h-[38px] items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors bg-transparent" title="Toggle Layout Direction">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-sm"></i>
+        </button>
+        <div class="flex items-center gap-2 lg:pl-3 lg:border-l lg:border-gray-800">
+          <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#0D9488]/40 shrink-0">
+            <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Sarah Jenkins"
+              class="w-full h-full object-cover object-top">
+          </div>
+          <span class="hidden sm:inline text-xs font-heading text-[#F8FAFC]">Sarah Jenkins</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Dropdown Navigation for Dashboard (Single Word Labels) -->
+    <div id="mobile-menu"
+      class="hidden fixed top-[73px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-2 border-b border-gray-900">
+      <button onclick="showSection('overview'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-overview"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all active">
+        <i class="fa-solid fa-chart-pie w-4 text-[#0D9488]"></i> Overview
+      </button>
+      <button onclick="showSection('progress'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-progress"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-calendar-check w-4 text-[#0284C7]"></i> Appointments
+      </button>
+      <button onclick="showSection('log'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-log"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-book-medical w-4 text-[#14B8A6]"></i> Journal
+      </button>
+      <button onclick="showSection('achievements'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-achievements"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-clipboard-check w-4 text-[#0D9488]"></i> Treatments
+      </button>
+      <button onclick="showSection('routes'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-routes"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-pills w-4 text-[#0284C7]"></i> Medications
+      </button>
+      <button onclick="showSection('bookings'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-bookings"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-user-doctor w-4 text-[#14B8A6]"></i> Consult
+      </button>
+      <button onclick="showSection('events'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-events"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-id-card w-4 text-[#0D9488]"></i> Records
+      </button>
+      <button onclick="showSection('membership'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-membership"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-credit-card w-4 text-[#0284C7]"></i> Billing
+      </button>
+      <button onclick="showSection('profile'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-profile"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#CBD5E1] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-circle-user w-4 text-[#94A3B8]"></i> Settings
+      </button>
+      <div class="h-[1px] bg-gray-800 my-2"></div>
+      
+      <!-- Mobile Settings Section -->
+      <div class="space-y-2">
+        <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold block px-1">Settings</span>
+        <div class="grid grid-cols-2 gap-2">
+          <button id="theme-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+            <span class="flex items-center gap-2">
+              <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#0D9488]"></i>
+              <span>Theme</span>
+            </span>
+            <span id="theme-switch-track" class="toggle-switch-track">
+              <span class="toggle-switch-thumb"></span>
+            </span>
+          </button>
+          <button id="rtl-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-right-left text-[#0284C7]"></i>
+              <span>Direction</span>
+            </span>
+            <span id="rtl-switch-track" class="toggle-switch-track">
+              <span class="toggle-switch-thumb"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <a href="index.html"
+        class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-red-400 hover:bg-red-950/20 transition-all text-decoration-none mt-1">
+        <i class="fa-solid fa-right-from-bracket w-4"></i> Log Out
+      </a>
+    </div>
+
+    <!-- Main Content Box -->
+    <main class="flex-1 p-3 md:p-8 lg:p-10 overflow-y-auto lg:mb-0 w-full max-w-full overflow-x-hidden">
+
+      <!-- 1. OVERVIEW PANEL -->
+      <div id="panel-overview" class="dashboard-panel space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl font-heading">Patient Care Overview</h2>
+            <p class="text-xs text-[#94A3B8] mt-1.5">Track procedure appointments, daily pain journal ratings, treatment plans, and medication schedules</p>
+          </div>
+          <button onclick="showSection('progress')"
+            class="px-4 py-2 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 text-white font-medium text-xs flex items-center gap-1.5 shadow-lg shadow-[#0D9488]/20 shrink-0">
+            <i class="fa-solid fa-plus"></i> Book Procedure / Consult
+          </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#94A3B8]">Next Procedure</span>
+            <p class="text-sm sm:text-lg font-heading text-[#0284C7] whitespace-nowrap">Sept 22 (Epidural)</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#94A3B8]">Current Pain Score</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#0D9488]">3 / 10 VAS</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#94A3B8]">Treatment Plan</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#14B8A6]">2 Active</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#94A3B8]">Medications</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#0284C7]">3 Scheduled</p>
+          </div>
+        </div>
+
+        <!-- Overview Charts & Mini Logs -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full min-w-0">
+          <div class="lg:col-span-8 glass-panel p-4 sm:p-6 rounded-2xl space-y-4 min-w-0">
+            <h4 class="text-sm font-heading">Pain VAS Reduction Score Trajectory (1-10)</h4>
+            <div class="h-64 relative w-full overflow-hidden">
+              <canvas id="overviewChart"></canvas>
+            </div>
+          </div>
+          <div class="lg:col-span-4 glass-panel p-6 rounded-2xl space-y-4 min-w-0">
+            <h4 class="text-sm font-heading">Clinical Alerts & Records</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-2 bg-[#081018]/40 rounded-xl border border-gray-900">
+                <i class="fa-solid fa-calendar-check text-[#0284C7] text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Lumbar Epidural Appointment</h5>
+                  <p class="text-[10px] text-[#94A3B8]">Sept 22, 10:00 AM • Dr. Vance (Suite 2)</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-2 bg-[#081018]/40 rounded-xl border border-gray-900">
+                <i class="fa-solid fa-circle-check text-[#0D9488] text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Stellate Block Log Verified</h5>
+                  <p class="text-[10px] text-[#94A3B8]">Dr. Rostova confirmed 90% pain reduction</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-2 bg-[#081018]/40 rounded-xl border border-gray-900">
+                <i class="fa-solid fa-pills text-[#14B8A6] text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Gabapentin Refill Active</h5>
+                  <p class="text-[10px] text-[#94A3B8]">300mg • 18 days supply remaining</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-2 bg-[#081018]/40 rounded-xl border border-gray-900">
+                <i class="fa-solid fa-notes-medical text-[#0284C7] text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Pre-Op Fasting Guidelines</h5>
+                  <p class="text-[10px] text-[#94A3B8]">No food 6 hrs prior to MAC sedation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. APPOINTMENTS PANEL -->
+      <div id="panel-progress" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Consultation & Procedure Appointments</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Book spinal injections, nerve blocks, or specialist physician consultations.</p>
+        </div>
+
+        <!-- Appointment Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#94A3B8]">Next Procedure</span>
+            <p class="text-lg font-heading text-[#0284C7]">Sept 22, 10:00 AM</p>
+            <span class="text-[8px] text-[#94A3B8] mt-1 block">Lumbar Epidural Steroid</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#94A3B8]">Attending Doctor</span>
+            <p class="text-lg font-heading text-[#0D9488]">Dr. Marcus Vance</p>
+            <span class="text-[8px] text-[#94A3B8] mt-1 block">Interventional Specialist</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#94A3B8]">Anesthesia Protocol</span>
+            <p class="text-lg font-heading text-[#14B8A6]">MAC Sedation</p>
+            <span class="text-[8px] text-[#94A3B8] mt-1 block">Dr. Elena Rostova (Anesthesiologist)</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#94A3B8]">Clinic Suite</span>
+            <p class="text-lg font-heading text-[#0284C7]">Suite 2 (C-Arm)</p>
+            <span class="text-[8px] text-[#94A3B8] mt-1 block">Denver Medical Center</span>
+          </div>
+        </div>
+
+        <!-- Booking Form Card -->
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <h4 class="text-base font-heading">Book New Consultation or Interventional Procedure</h4>
+          <form onsubmit="event.preventDefault(); alert('Appointment request submitted successfully! Our intake coordinator will confirm within 2 hours.');"
+            class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Select Physician / Specialist</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Dr. Marcus Vance, MD (Interventional Spine)</option>
+                  <option>Dr. Elena Rostova, MD (Anesthesiology & Nerve Blocks)</option>
+                  <option>Dr. Aris Thorne, MD (Neuromodulation & SCS)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Procedure / Service Type</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Lumbar Epidural Steroid Injection</option>
+                  <option>Cervical Facet Joint Injection / RFA</option>
+                  <option>Stellate Ganglion Sympathetic Block</option>
+                  <option>Sacroiliac (SI) Joint Block</option>
+                  <option>Physician Initial Consultation</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Preferred Date</label>
+                <input type="date" required class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Pain Symptoms & Diagnostic Notes</label>
+              <textarea placeholder="Describe pain location, current VAS severity (1-10), and MRI radiologist findings..." rows="3"
+                class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0D9488]"></textarea>
+            </div>
+            <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 text-white font-medium text-xs">
+              Request Appointment Slot
+            </button>
+          </form>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4 min-w-0">
+          <h4 class="text-sm font-heading">Historical Procedure Relief Trajectory (%)</h4>
+          <div class="h-80 relative w-full overflow-hidden">
+            <canvas id="fullProgressChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. JOURNAL PANEL (Pain Journal Entries) -->
+      <div id="panel-log" class="dashboard-panel space-y-6 hidden">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl font-heading">Pain Journal Tracker</h2>
+            <p class="text-xs text-[#94A3B8] mt-1.5">Track daily pain scale entries (VAS 1-10), body locations, and trigger factors for physician review.</p>
+          </div>
+          <button onclick="openLogModal()"
+            class="px-4 py-2 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 text-white font-medium text-xs flex items-center gap-1.5 shadow-lg shadow-[#0D9488]/20 shrink-0">
+            <i class="fa-solid fa-plus"></i> New Pain Entry
+          </button>
+        </div>
+
+        <!-- Pain VAS Rating Card -->
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <h4 class="text-sm font-heading">Log Today's Pain Score (Visual Analog Scale 1-10)</h4>
+          <form onsubmit="event.preventDefault(); alert('Pain journal entry saved to your electronic health record!');" class="space-y-4">
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs text-[#CBD5E1]">
+                <span>Mild (1-3)</span>
+                <span id="pain-val-display" class="font-bold text-[#0D9488] text-base">3 / 10</span>
+                <span>Severe (8-10)</span>
+              </div>
+              <input type="range" min="1" max="10" value="3" id="painRangeSlider"
+                oninput="document.getElementById('pain-val-display').innerText = this.value + ' / 10';"
+                class="w-full accent-[#0D9488] cursor-pointer">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Body Pain Region</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Lumbar Spine (Lower Back)</option>
+                  <option>Cervical Spine (Neck)</option>
+                  <option>Sciatic Nerve (Leg / Hip)</option>
+                  <option>Sacroiliac (SI) Joint</option>
+                  <option>Thoracic Mid-Back</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Pain Type</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Burning / Neuropathic</option>
+                  <option>Sharp / Radiating</option>
+                  <option>Throbbing / Aching</option>
+                  <option>Stiffness / Tightness</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Trigger / Activity Factor</label>
+                <input type="text" placeholder="e.g., Prolonged sitting, bending, walking" class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+              </div>
+            </div>
+
+            <button type="submit" class="px-6 py-2 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 text-white font-medium text-xs">
+              Save Pain Log Entry
+            </button>
+          </form>
+        </div>
+
+        <!-- Pain Journal Table -->
+        <div class="glass-panel rounded-2xl overflow-hidden">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0 text-xs">
+              <thead>
+                <tr class="border-b border-gray-800 text-[#94A3B8]">
+                  <th class="py-3 px-4">Date</th>
+                  <th class="py-3 px-4">VAS Rating</th>
+                  <th class="py-3 px-4">Body Region</th>
+                  <th class="py-3 px-4">Pain Character</th>
+                  <th class="py-3 px-4">Trigger / Notes</th>
+                  <th class="py-3 px-4 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-900">
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-09-14</td>
+                  <td class="py-3 px-4 font-bold text-[#0D9488]">3 / 10</td>
+                  <td class="py-3 px-4 font-medium">Lumbar Spine</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#0284C7]/20 text-[#0284C7]">Dull Ache</span></td>
+                  <td class="py-3 px-4 text-gray-400">Post 45-min walk, manageable</td>
+                  <td class="py-3 px-4 text-right text-[#0D9488]">Reviewed</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-09-11</td>
+                  <td class="py-3 px-4 font-bold text-[#0D9488]">2 / 10</td>
+                  <td class="py-3 px-4 font-medium">Lumbar Spine</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#0284C7]/20 text-[#0284C7]">Mild Stiffness</span></td>
+                  <td class="py-3 px-4 text-gray-400">Stellate block relief active</td>
+                  <td class="py-3 px-4 text-right text-[#0D9488]">Reviewed</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-09-08</td>
+                  <td class="py-3 px-4 font-bold text-[#0284C7]">5 / 10</td>
+                  <td class="py-3 px-4 font-medium">Sciatic Nerve</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">Burning</span></td>
+                  <td class="py-3 px-4 text-gray-400">Long car ride, took Gabapentin</td>
+                  <td class="py-3 px-4 text-right text-[#0D9488]">Reviewed</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-08-20</td>
+                  <td class="py-3 px-4 font-bold text-red-400">7 / 10</td>
+                  <td class="py-3 px-4 font-medium">Lumbar & Sciatic</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400">Sharp Radiating</span></td>
+                  <td class="py-3 px-4 text-gray-400">Prior to Epidural injection</td>
+                  <td class="py-3 px-4 text-right text-gray-500">Archived</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. TREATMENTS PANEL (Treatment Plan History) -->
+      <div id="panel-achievements" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Treatment Plan History</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Access history of interventional procedures, nerve blocks, and relief durations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Treatment 1 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3 border-t-2 border-t-[#0D9488]">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] uppercase font-semibold text-[#0D9488] bg-[#0D9488]/10 px-2 py-0.5 rounded">Active Relief</span>
+              <span class="text-[10px] text-gray-500">Sept 10, 2026</span>
+            </div>
+            <h4 class="text-base font-heading">Stellate Ganglion Block</h4>
+            <p class="text-xs text-[#94A3B8]">Performed by Dr. Elena Rostova under fluoroscopy. 90% reduction in upper extremity neuropathic pain.</p>
+            <div class="pt-2 border-t border-gray-800 flex justify-between text-[10px] text-[#CBD5E1]">
+              <span>Duration: Active</span>
+              <span class="text-[#0D9488] font-bold">90% Relief</span>
+            </div>
+          </div>
+
+          <!-- Treatment 2 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3 border-t-2 border-t-[#0284C7]">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] uppercase font-semibold text-[#0284C7] bg-[#0284C7]/10 px-2 py-0.5 rounded">Completed</span>
+              <span class="text-[10px] text-gray-500">Aug 15, 2026</span>
+            </div>
+            <h4 class="text-base font-heading">L5-S1 Transforaminal Epidural</h4>
+            <p class="text-xs text-[#94A3B8]">Performed by Dr. Marcus Vance. Target corticosteroid injection for sciatic nerve compression.</p>
+            <div class="pt-2 border-t border-gray-800 flex justify-between text-[10px] text-[#CBD5E1]">
+              <span>Duration: 6 Months</span>
+              <span class="text-[#0284C7] font-bold">85% Relief</span>
+            </div>
+          </div>
+
+          <!-- Treatment 3 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3 border-t-2 border-t-[#14B8A6]">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] uppercase font-semibold text-[#14B8A6] bg-[#14B8A6]/10 px-2 py-0.5 rounded">Completed</span>
+              <span class="text-[10px] text-gray-500">May 20, 2026</span>
+            </div>
+            <h4 class="text-base font-heading">Cervical Facet Medial Branch Block</h4>
+            <p class="text-xs text-[#94A3B8]">Diagnostic facet joint injection eliminating cervicogenic headaches and neck stiffness.</p>
+            <div class="pt-2 border-t border-gray-800 flex justify-between text-[10px] text-[#CBD5E1]">
+              <span>Duration: 4 Months</span>
+              <span class="text-[#14B8A6] font-bold">80% Relief</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. MEDICATIONS PANEL (Medication Schedule) -->
+      <div id="panel-routes" class="dashboard-panel space-y-6 hidden">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-xl font-heading">Medication Schedule</h2>
+            <p class="text-xs text-[#94A3B8] mt-1.5">View your current prescribed nerve modulators, NSAIDs, and refill statuses.</p>
+          </div>
+          <button onclick="alert('Refill request sent to ApexPain clinical pharmacy desk!');"
+            class="px-4 py-2 rounded-xl bg-[#0D9488] text-white text-xs font-medium">Request Medication Refill</button>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0 text-xs">
+              <thead>
+                <tr class="border-b border-gray-800 text-[#94A3B8]">
+                  <th class="py-3 px-4">Medication</th>
+                  <th class="py-3 px-4">Class</th>
+                  <th class="py-3 px-4">Dosage & Timing</th>
+                  <th class="py-3 px-4">Prescribing Doctor</th>
+                  <th class="py-3 px-4 text-right">Refill Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-900">
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Gabapentin 300mg</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#0D9488]/20 text-[#0D9488]">Nerve Modulator</span></td>
+                  <td class="py-3 px-4">1 Capsule 3x Daily (Morning, Midday, Night)</td>
+                  <td class="py-3 px-4 text-gray-400">Dr. Marcus Vance</td>
+                  <td class="py-3 px-4 text-right text-[#0D9488]">18 Days Remaining</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Celecoxib 200mg</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#0284C7]/20 text-[#0284C7]">NSAID Anti-Inflammatory</span></td>
+                  <td class="py-3 px-4">1 Capsule Morning with Food</td>
+                  <td class="py-3 px-4 text-gray-400">Dr. Elena Rostova</td>
+                  <td class="py-3 px-4 text-right text-[#0284C7]">22 Days Remaining</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-white">Baclofen 10mg</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#14B8A6]/20 text-[#14B8A6]">Muscle Relaxant</span></td>
+                  <td class="py-3 px-4">1 Tablet Nightly as needed for spasms</td>
+                  <td class="py-3 px-4 text-gray-400">Dr. Aris Thorne</td>
+                  <td class="py-3 px-4 text-right text-[#14B8A6]">30 Days Remaining</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CONSULT PANEL (Doctor Consultation) -->
+      <div id="panel-bookings" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Consult Specialist Doctors</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Schedule virtual telehealth consultations or pre-op meetings with ApexPain physicians.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <h4 class="text-sm font-heading">Upcoming Consultations</h4>
+          <div
+            class="p-4 bg-[#081018]/60 border border-gray-800 rounded-xl flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center">
+            <div class="flex items-start sm:items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-lg bg-[#0D9488]/20 flex items-center justify-center text-[#0D9488] shrink-0 mt-0.5 sm:mt-0">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <div>
+                <h5 class="text-xs font-heading">Pre-Procedure Anesthesia Review</h5>
+                <p class="text-[10px] text-[#94A3B8] mt-0.5">With Dr. Elena Rostova, MD • Today at 3:00 PM (15 Mins)</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] bg-[#0D9488]/20 text-[#0D9488] px-2.5 py-1 rounded uppercase font-heading font-semibold shrink-0">Confirmed</span>
+          </div>
+
+          <div class="border-t border-gray-800 pt-6">
+            <h4 class="text-sm font-heading mb-4">Book New Doctor Consultation Slot</h4>
+            <form onsubmit="event.preventDefault(); alert('Telehealth consult slot requested successfully!');"
+              class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Select Physician</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Dr. Marcus Vance (Spine Specialist)</option>
+                  <option>Dr. Elena Rostova (Anesthesiologist)</option>
+                  <option>Dr. Aris Thorne (Neuromodulation)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Date</label>
+                <input type="date" required
+                  class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#94A3B8] mb-1">Time Block</label>
+                <select class="w-full px-3 py-2 bg-[#081018] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>09:00 AM - Morning</option>
+                  <option>02:00 PM - Afternoon</option>
+                  <option>05:00 PM - Evening</option>
+                </select>
+              </div>
+              <div class="flex items-end">
+                <button type="submit"
+                  class="w-full py-2.5 rounded-lg bg-[#0D9488] hover:bg-[#0D9488]/90 text-white font-medium text-xs">Request Session</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. RECORDS PANEL (Pre-Anesthesia & Health Records) -->
+      <div id="panel-events" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Pre-Op & Health Records</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Upload MRI scans, X-rays, and view anesthesia clearance documents.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Upload Form -->
+          <div class="lg:col-span-7 glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Upload MRI Radiology Reports & Imaging</h4>
+            <div class="border-2 border-dashed border-gray-800 hover:border-[#0D9488] transition-colors rounded-xl p-6 text-center cursor-pointer"
+                 onclick="alert('Select your DICOM / MRI PDF files to upload.');">
+              <i class="fa-solid fa-cloud-arrow-up text-3xl text-[#0284C7] mb-2"></i>
+              <p class="text-xs text-[#CBD5E1] font-medium">Click or Drag DICOM, MRI, or X-Ray PDF files</p>
+              <p class="text-[10px] text-[#94A3B8] mt-1">Encrypted HIPAA transmission layer active</p>
+            </div>
+          </div>
+
+          <!-- Active Clearances -->
+          <div class="lg:col-span-5 glass-panel p-6 rounded-2xl space-y-3">
+            <h4 class="text-sm font-heading">Active Pre-Op Clearances</h4>
+            <div class="p-3 bg-[#081018]/40 border border-gray-900 rounded-xl space-y-2 text-xs">
+              <div class="flex justify-between"><span>Anesthesia Clearance:</span><span class="text-[#0D9488] font-bold">Approved</span></div>
+              <div class="flex justify-between"><span>MRI Radiology Review:</span><span class="text-[#0D9488] font-bold">L5-S1 Impingement</span></div>
+              <div class="flex justify-between"><span>Consent Documents:</span><span class="text-[#0284C7] font-bold">Signed Online</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. BILLING PANEL (Invoices & Billing) -->
+      <div id="panel-membership" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Invoices & Insurance Billing</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Manage procedure invoices, insurance claims (BlueCross/Medicare), and co-pay receipts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full min-w-0">
+          <div class="lg:col-span-4 glass-panel p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <h4 class="text-sm font-heading">Active Health Insurance</h4>
+              <div class="p-3 bg-[#081018]/40 border border-gray-900 rounded-xl space-y-3 text-xs">
+                <div>
+                  <span class="text-[#94A3B8] text-[9px] uppercase">Insurer</span>
+                  <p class="font-heading">BlueCross PPO Healthcare</p>
+                </div>
+                <div class="flex justify-between">
+                  <div>
+                    <span class="text-[#94A3B8] text-[9px] uppercase">Procedure Cover</span>
+                    <p class="text-[#0D9488] font-heading">85% Covered</p>
+                  </div>
+                  <div>
+                    <span class="text-[#94A3B8] text-[9px] uppercase">Copay Due</span>
+                    <p class="text-[#0284C7] font-heading">$35.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="alert('Redirecting to secure payment processing portal...');"
+              class="w-full py-2.5 rounded-xl bg-[#0D9488] text-white transition-all text-xs font-medium mt-4">Pay Outstanding Copay ($35.00)</button>
+          </div>
+
+          <div class="lg:col-span-8 glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Procedure Billing Statements</h4>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0 text-xs">
+                <thead>
+                  <tr class="border-b border-gray-800 text-[#94A3B8]">
+                    <th class="py-2.5">Date</th>
+                    <th class="py-2.5">Procedure / Item</th>
+                    <th class="py-2.5 text-right">Insurance Claimed</th>
+                    <th class="py-2.5 text-right">Patient Copay</th>
+                    <th class="py-2.5 text-right">Receipt</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-900">
+                  <tr>
+                    <td class="py-3 text-gray-500">Sept 10, 2026</td>
+                    <td class="py-3 font-medium">Stellate Ganglion Nerve Block</td>
+                    <td class="py-3 text-right font-heading text-[#0D9488]">$850.00</td>
+                    <td class="py-3 text-right"><span class="px-2 py-0.5 rounded bg-[#0D9488]/20 text-[#0D9488] text-[10px]">$35.00 Paid</span></td>
+                    <td class="py-3 text-right"><a href="#" onclick="alert('Downloading PDF Receipt...');" class="text-[#0284C7] hover:underline text-decoration-none">PDF</a></td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 text-gray-500">Aug 15, 2026</td>
+                    <td class="py-3 font-medium">L5-S1 Transforaminal Epidural</td>
+                    <td class="py-3 text-right font-heading text-[#0D9488]">$1,200.00</td>
+                    <td class="py-3 text-right"><span class="px-2 py-0.5 rounded bg-[#0D9488]/20 text-[#0D9488] text-[10px]">$50.00 Paid</span></td>
+                    <td class="py-3 text-right"><a href="#" onclick="alert('Downloading PDF Receipt...');" class="text-[#0284C7] hover:underline text-decoration-none">PDF</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. SETTINGS PANEL -->
+      <div id="panel-profile" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Patient Account Settings</h2>
+          <p class="text-xs text-[#94A3B8] mt-1.5">Update patient demographics, emergency contacts, and clinic notification preferences.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl">
+          <form onsubmit="event.preventDefault(); alert('Patient configurations saved successfully!');"
+            class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Patient Full Name</label>
+                <input type="text" value="Sarah Jenkins"
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Primary Clinic Location</label>
+                <select
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+                  <option>ApexPain Medical Center - Denver (Glenarm Pl)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Primary Insurance Policy #</label>
+                <input type="text" value="BC-98402129-A"
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Contact Email Address</label>
+                <input type="email" value="sarah.jenkins@apexpain.com"
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Emergency Contact Phone</label>
+                <input type="text" value="(303) 555-0188"
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full py-2.5 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 transition-all text-white text-xs font-medium mt-4">Save Patient Preferences</button>
+          </form>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Log Session Modal (Used as New Entry Modal) -->
+  <div class="modal fade" id="logClimbModal" tabindex="-1" aria-labelledby="logClimbModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-[#0D1B2A] border border-gray-800 text-white rounded-3xl p-6">
+        <div class="modal-header border-b-0 p-0 justify-between items-center">
+          <h5 class="modal-title font-heading text-lg" id="logClimbModalLabel">Log Pain Rating & Symptom Entry</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 mt-4">
+          <form class="space-y-4" id="logClimbForm" onsubmit="event.preventDefault(); alert('Pain journal entry recorded!'); bootstrap.Modal.getInstance(document.getElementById('logClimbModal')).hide();">
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Body Pain Location</label>
+              <input type="text" required placeholder="e.g. Lumbar Spine, Neck, Sciatic"
+                class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Pain Rating VAS (1-10)</label>
+                <input type="number" required min="1" max="10" value="3"
+                  class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#94A3B8] mb-1">Pain Character</label>
+                <select class="w-full px-4 py-2 bg-[#081018] border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-[#0284C7]">
+                  <option value="Neuropathic">Neuropathic / Burning</option>
+                  <option value="Sharp">Sharp / Radiating</option>
+                  <option value="Ache">Dull Ache</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit"
+              class="w-full py-3 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 transition-all font-medium text-xs uppercase tracking-wider mt-4">
+              Save Journal Entry
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+
+</html>

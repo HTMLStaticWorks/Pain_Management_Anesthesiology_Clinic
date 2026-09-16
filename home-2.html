@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home 2 - ApexPain Management & Anesthesiology Clinic</title>
+  <meta name="description"
+    content="Explore specialized interventional spine procedures, image-guided nerve blocks, fluoroscopy injections, and sub-specialty anesthesiology care at ApexPain.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#081018',
+            cardbg1: '#0D1B2A',
+            cardbg2: '#132337',
+            primary: '#0D9488',
+            secondary: '#0284C7',
+            accent: '#14B8A6',
+            violet: {
+              400: '#0D9488',
+              500: '#0F766E',
+              600: '#0284C7',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="bg-[#081018] text-[#F8FAFC]">
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
+    <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
+      <a class="brand-logo flex items-center gap-2" href="index.html">
+        <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+        <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+      </a>
+
+      <!-- Desktop Links (Single Word) -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="index.html">Home</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="home-2.html">Home 2</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="about.html">About</a>
+        
+        <!-- Services Hover Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 text-[#CBD5E1] hover:text-[#0D9488] transition-colors focus:outline-none py-2 font-medium">
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="absolute left-0 mt-0 w-48 rounded-xl bg-[#0D1B2A]/95 border border-gray-800 shadow-2xl p-2 hidden group-hover:block hover:block transition-all z-50 backdrop-blur-md">
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="medicines.html">Injections</a>
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="prescriptions.html">Programs</a>
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="health-blog.html">Articles</a>
+          </div>
+        </div>
+
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="doctors.html">Doctors</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="contact.html">Contact</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="dashboard.html">Dashboard</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Theme Toggle Switch Button -->
+        <button id="theme-toggle" class="header-theme-switch" title="Toggle Theme">
+          <span class="track-icons flex justify-between items-center text-xs select-none w-full">
+            <i class="fa-regular fa-moon text-sky-400 text-xs opacity-75"></i>
+            <i class="fa-regular fa-sun text-amber-400 text-xs opacity-75"></i>
+          </span>
+          <span id="header-theme-thumb">
+            <i id="theme-icon" class="fa-regular fa-sun text-white"></i>
+          </span>
+        </button>
+
+        <!-- RTL/LTR Toggle Button -->
+        <button id="rtl-toggle" class="w-[38px] h-[38px] flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors bg-transparent" title="Toggle Layout Direction">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-sm"></i>
+        </button>
+        <a href="register.html"
+          class="h-[38px] px-5 inline-flex items-center justify-center rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all duration-300 font-medium text-sm text-decoration-none">
+          Register
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="lg:hidden text-[#F8FAFC] text-xl" id="mobile-menu-btn" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu"
+    class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-5 z-40 lg:hidden flex flex-col gap-3">
+    <a class="text-base text-[#CBD5E1]" href="index.html">Home</a>
+    <a class="text-base text-[#CBD5E1]" href="home-2.html">Home 2</a>
+    <a class="text-base text-[#CBD5E1]" href="about.html">About</a>
+    
+    <!-- Mobile Services sub-menu -->
+    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1">
+      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold mb-1">Services</span>
+      <a class="text-sm text-[#CBD5E1]" href="medicines.html">Injections</a>
+      <a class="text-sm text-[#CBD5E1]" href="prescriptions.html">Programs</a>
+      <a class="text-sm text-[#CBD5E1]" href="health-blog.html">Articles</a>
+    </div>
+
+    <a class="text-base text-[#CBD5E1]" href="doctors.html">Doctors</a>
+    <a class="text-base text-[#CBD5E1]" href="contact.html">Contact</a>
+    <a class="text-base text-[#CBD5E1]" href="dashboard.html">Dashboard</a>
+
+    <div class="h-[1px] bg-gray-800/80 my-2"></div>
+    
+    <!-- Mobile Settings Section -->
+    <div class="space-y-2">
+      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold block px-1">Settings</span>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="theme-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+          <span class="flex items-center gap-2">
+            <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#0D9488]"></i>
+            <span>Theme</span>
+          </span>
+          <span id="theme-switch-track" class="toggle-switch-track">
+            <span class="toggle-switch-thumb"></span>
+          </span>
+        </button>
+        <button id="rtl-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-right-left text-[#0284C7]"></i>
+            <span>Direction</span>
+          </span>
+          <span id="rtl-switch-track" class="toggle-switch-track">
+            <span class="toggle-switch-thumb"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pt-2">
+      <a href="register.html"
+        class="w-full block text-center py-2.5 rounded-xl bg-[#0D9488] text-white font-medium hover:bg-opacity-95 transition-all text-decoration-none text-sm shadow-md shadow-[#0D9488]/20">
+        Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen lg:min-h-0 flex items-center pt-24 lg:pt-28 lg:pb-20 xl:pt-36 xl:pb-28 overflow-hidden">
+    <div class="bg-gradient-orb orb-primary"></div>
+    <div class="container max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div class="lg:col-span-7 space-y-6 flex flex-col items-center text-center" data-aos="fade-right">
+        <span class="text-xs uppercase tracking-widest text-[#0284C7] font-heading font-semibold">Specialized Interventional Care</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight">
+           Advanced Interventional <br><span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-[#0284C7] to-[#0D9488] text-glow-secondary">Spine & Nerve Specialties</span>
+        </h1>
+        <p class="text-[#CBD5E1] text-lg font-light leading-relaxed max-w-xl mx-auto">
+          ApexPain delivers fluoroscopy-guided spinal injections, diagnostic nerve blocks, radiofrequency neurotomy, and sub-specialty anesthesiology care designed to address root causes of acute and chronic pain.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 max-w-lg w-full">
+          <a href="contact.html"
+            class="hero-btn px-8 py-3 rounded-full bg-[#0D9488] text-white glow-btn-primary hover:bg-[#0D9488]/90 transition-all font-medium text-center w-full text-decoration-none">
+            Schedule Procedure
+          </a>
+          <a href="medicines.html"
+            class="hero-btn px-8 py-3 rounded-full border border-gray-800 bg-[#0D1B2A]/40 hover:border-gray-600 transition-all text-[#F8FAFC] btn-secondary-hero text-center w-full text-decoration-none">
+            Injections Overview
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative" data-aos="fade-left">
+        <!-- Single Hero Image -->
+        <div class="h-[340px] sm:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative">
+          <img src="https://cnmeditech.com/wp-content/uploads/2025/11/C-Arm.jpg"
+            alt="Fluoroscopy Fluoroscopic Spine Procedure Suite" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#081018]/60 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Specializations -->
+  <section class="py-24 bg-[#0D1B2A]/40 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#0D9488] font-heading font-semibold">Specialty Pillars</span>
+        <h2 class="text-3xl font-heading">Sub-Specialty Pain Disciplines</h2>
+        <p class="text-[#94A3B8] text-sm max-w-md mx-auto">Targeted minimally invasive procedural care tailored by board-certified anesthesiologists.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all" data-aos="fade-up"
+          data-aos-delay="100">
+          <h4 class="text-lg font-heading text-[#0284C7]">Interventional Spine Procedures</h4>
+          <p class="text-xs text-[#94A3B8]">Fluoroscopy-guided cervical, thoracic, and lumbar epidural steroid injections, transforaminal nerve blocks, and facet joint injections for disc herniations and stenosis.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all" data-aos="fade-up"
+          data-aos-delay="200">
+          <h4 class="text-lg font-heading text-[#0D9488]">Diagnostic Nerve Blocks & RFA</h4>
+          <p class="text-xs text-[#94A3B8]">Selective nerve root blocks, stellate ganglion blocks, occipital nerve therapy, and thermal radiofrequency ablation (RFA) providing 6-12 months of sustained relief.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all" data-aos="fade-up"
+          data-aos-delay="300">
+          <h4 class="text-lg font-heading text-[#14B8A6]">Neuromodulation & Anesthesiology</h4>
+          <p class="text-xs text-[#94A3B8]">Spinal cord stimulation (SCS) trials, intrathecal pump management, and sub-specialty conscious sedation protocol for anxious or sensitive patients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Procedural Safety & Fluoroscopy Guidance -->
+  <section class="py-24 bg-[#081018]">
+    <div class="container max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5 relative" data-aos="fade-right">
+        <div class="h-[250px] sm:h-[320px] md:h-[550px] lg:h-[400px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative">
+          <img src="https://bostonglobe-prod.cdn.arcpublishing.com/resizer/v2/GYWZNVRPOII6DP3VU42GPR66PE.jpg?auth=4612f374c9ce5ab47b5e0281bdaa585b9be70c037b5593dafafaaf5203b32700&width=1440" alt="Fluoroscopic Surgical Suite"
+            class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#081018] to-transparent opacity-60"></div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+        <span class="text-xs uppercase tracking-widest text-[#0D9488] font-heading font-semibold block">Precision Safety</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Fluoroscopic Precision & Anesthetic Comfort</h2>
+        <p class="text-[#CBD5E1] text-sm leading-relaxed">
+          Every interventional procedure at ApexPain is performed in our AAAHC-accredited surgical suite under real-time high-definition C-arm fluoroscopy with radiopaque contrast verification.
+        </p>
+
+        <div class="space-y-4 pt-4">
+          <div class="flex gap-4 items-start p-4 bg-[#0D1B2A]/40 rounded-2xl border border-gray-900">
+            <div
+              class="w-10 h-10 rounded-lg bg-[#0D9488]/10 flex items-center justify-center text-[#0D9488] shrink-0 font-heading">
+              <i class="fa-solid fa-bullseye"></i></div>
+            <div>
+              <h4 class="text-sm font-heading">Sub-Millimeter Targeting</h4>
+              <p class="text-xs text-[#94A3B8]">Continuous live image guidance ensures exact delivery of anti-inflammatory medication directly to inflamed nerve roots.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-4 bg-[#0D1B2A]/40 rounded-2xl border border-gray-900">
+            <div
+              class="w-10 h-10 rounded-lg bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] shrink-0 font-heading">
+              <i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <h4 class="text-sm font-heading">Monitored Anesthesia Care (MAC)</h4>
+              <p class="text-xs text-[#94A3B8]">Attending anesthesiologists deliver gentle intravenous sedation for complete patient comfort throughout procedure steps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Care Coordination -->
+  <section class="py-24 bg-[#0D1B2A]/30 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-right">
+          <span class="text-xs uppercase tracking-widest text-[#0D9488] font-heading font-semibold block">Patient Portal</span>
+          <h2 class="text-3xl md:text-4xl font-heading">Seamless Care Coordination</h2>
+          <p class="text-[#CBD5E1] text-sm leading-relaxed">
+            Monitor your procedure schedule, access MRI radiological reports, track daily pain scale ratings, and coordinate insurance approvals within the ApexPain portal.
+          </p>
+          <div class="grid md:grid-cols-2 gap-6 pt-4">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check text-[#0D9488]"></i>
+                <h4 class="text-sm font-heading">Procedure Booking</h4>
+              </div>
+              <p class="text-xs text-[#94A3B8]">Select interventional spine doctors, choose preferred dates, and schedule pre-op consultations online.</p>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-[#0284C7]"></i>
+                <h4 class="text-sm font-heading">Pain Outcome Tracking</h4>
+              </div>
+              <p class="text-xs text-[#94A3B8]">Log post-procedure pain scores to provide your physician with accurate recovery data.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 relative" data-aos="fade-left">
+          <div class="h-[320px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative">
+            <img src="https://www.actualpacs.com/assets/img/actualpatient_great.webp"
+              alt="ApexPain portal on tablet in clinical setting" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Workflow Steps -->
+  <section class="py-24 bg-[#081018]">
+    <div class="container max-w-7xl mx-auto px-4 text-center space-y-12">
+      <div class="space-y-3 max-w-xl mx-auto" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#0284C7] font-heading font-semibold">Workflow</span>
+        <h2 class="text-3xl font-heading">Three-Phase Interventional Process</h2>
+        <p class="text-[#94A3B8] text-sm">Our structured clinical protocol ensures safety, precision, and measurable outcome success.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+        <!-- Step 1 Card -->
+        <div
+          class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="h-60 relative overflow-hidden border-b border-gray-800">
+            <img src="https://practiceplusgroup.com/wp-content/uploads/2026/01/news-ppg-scans.webp" alt="Diagnostic Imaging Review"
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-heading">1. Diagnostic Imaging Mapping</h3>
+            <p class="text-xs text-[#94A3B8]">Review of MRI spinal scans and physical neurological exam to determine exact pain generators.</p>
+          </div>
+        </div>
+        <!-- Step 2 Card -->
+        <div
+          class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="200">
+          <div class="h-60 relative overflow-hidden border-b border-gray-800">
+            <img src="https://www.news-medical.net/image-handler/picture/2019/3/shutterstock_1098970352.jpg"
+              alt="Fluoroscopy Procedure" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-heading">2. Image-Guided Procedure</h3>
+            <p class="text-xs text-[#94A3B8]">Fluoroscopic insertion of therapeutic medication or radiofrequency energy under conscious sedation.</p>
+          </div>
+        </div>
+        <!-- Step 3 Card -->
+        <div
+          class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col justify-between md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0"
+          data-aos="fade-up" data-aos-delay="300">
+          <div class="h-60 relative overflow-hidden border-b border-gray-800">
+            <img src="https://sa1s3optim.patientpop.com/assets/images/provider/photos/2857167.jpeg" alt="Rehabilitation Follow Up"
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-heading">3. Physical Rehab Integration</h3>
+            <p class="text-xs text-[#94A3B8]">Transition to active physical therapy and core strengthening during the relief window.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-6" data-aos="fade-up">
+        <a href="contact.html"
+          class="px-8 py-3 rounded-full bg-[#0D9488] text-white hover:bg-[#0D9488]/90 transition-all font-medium inline-block shadow-lg shadow-[#0D9488]/20 text-decoration-none">
+          Schedule Clinical Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Static Testimonial Grid -->
+  <section class="py-24 bg-[#081018]">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-2xl md:text-3xl font-heading">Patient Experiences</h2>
+        <p class="text-[#94A3B8] text-sm mt-2">Verified clinical outcomes from ApexPain patients.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <p class="text-xs italic text-[#CBD5E1]">"My lumbar facet radiofrequency ablation gave me 10 months of complete relief from chronic back pain. The fluoroscopy precision and sedation made the procedure comfortable."</p>
+          <h5 class="text-xs font-heading font-medium text-[#0284C7]">Marcus Henderson — Denver CO</h5>
+        </div>
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <p class="text-xs italic text-[#CBD5E1]">"I was nervous about cervical epidural injections, but Dr. Rostova explained every step thoroughly. My radiating arm pain decreased by 90% within three days."</p>
+          <h5 class="text-xs font-heading font-medium text-[#0D9488]">Elena Vance — Patient</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer pt-16 pb-12 text-sm text-[#94A3B8]">
+    <div class="bg-gradient-orb orb-primary opacity-[0.04] -bottom-16 -left-16 w-80 h-80"></div>
+    <div class="bg-gradient-orb orb-secondary opacity-[0.04] -top-16 -right-16 w-80 h-80"></div>
+
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 relative z-10">
+      <!-- Brand column -->
+      <div class="md:col-span-4 space-y-4">
+        <a class="brand-logo flex items-center gap-2" href="index.html">
+          <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+          <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+        </a>
+        <p class="text-xs leading-relaxed text-[#94A3B8] max-w-sm">
+          ApexPain is a premier pain management and anesthesiology clinic providing image-guided interventions, nerve block therapies, and personalized pain recovery programs.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="social-icon-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn youtube" title="YouTube">
+            <i class="fa-brands fa-youtube text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn facebook" title="Facebook">
+            <i class="fa-brands fa-facebook-f text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn linkedin" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in text-center"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick links (Single Word Labels) -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Services</h5>
+        <ul class="space-y-2 text-xs p-0 list-none">
+          <li><a href="medicines.html" class="hover:text-white transition-colors text-decoration-none">Injections</a></li>
+          <li><a href="prescriptions.html" class="hover:text-white transition-colors text-decoration-none">Programs</a></li>
+          <li><a href="health-blog.html" class="hover:text-white transition-colors text-decoration-none">Articles</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-colors text-decoration-none">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Navigation</h5>
+        <ul class="space-y-2 text-xs p-0 list-none">
+          <li><a href="index.html" class="hover:text-white transition-colors text-decoration-none">Home</a></li>
+          <li><a href="home-2.html" class="hover:text-white transition-colors text-decoration-none">Home 2</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors text-decoration-none">About</a></li>
+          <li><a href="doctors.html" class="hover:text-white transition-colors text-decoration-none">Doctors</a></li>
+          <li><a href="dashboard.html" class="hover:text-white transition-colors text-decoration-none">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Info column -->
+      <div class="md:col-span-4 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Clinic Location</h5>
+        <ul class="space-y-3 text-xs text-[#94A3B8] p-0 list-none">
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#0D9488]/10 border border-[#0D9488]/20 flex items-center justify-center text-[#0D9488] shrink-0 mt-0.5">
+              <i class="fa-solid fa-location-dot text-xs text-center"></i>
+            </div>
+            <span class="leading-relaxed text-[#CBD5E1]">
+              ApexPain Medical Center<br>
+              1400 Glenarm Place, Suite 400, Denver, CO 80202
+            </span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#0284C7]/10 border border-[#0284C7]/20 flex items-center justify-center text-[#0284C7] shrink-0">
+              <i class="fa-solid fa-phone text-xs text-center"></i>
+            </div>
+            <a href="tel:3035550140" class="text-[#CBD5E1] hover:text-white transition-colors text-decoration-none">
+              (303) 555-0140
+            </a>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#14B8A6]/10 border border-[#14B8A6]/20 flex items-center justify-center text-[#14B8A6] shrink-0">
+              <i class="fa-solid fa-envelope text-xs text-center"></i>
+            </div>
+            <a href="mailto:care@apexpain.com" class="text-[#CBD5E1] hover:text-white transition-colors text-decoration-none">
+              care@apexpain.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom border & copyright -->
+    <div class="container max-w-7xl mx-auto px-4 pt-8 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
+      <p class="text-[#64748B]">&copy; 2026 ApexPain Management & Anesthesiology Center. All Rights Reserved.</p>
+      <div class="flex gap-6 text-[#64748B]">
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">Terms</a>
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">HIPAA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (Back to Top) -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-angle-up text-lg"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 800, once: true });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

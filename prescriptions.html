@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs - ApexPain Management & Anesthesiology Clinic</title>
+  <meta name="description" content="Explore ApexPain specialized nerve blocks and multidisciplinary chronic pain programs: stellate ganglion blocks, occipital nerve blocks, and functional rehab.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#081018',
+            cardbg1: '#0D1B2A',
+            cardbg2: '#132337',
+            primary: '#0D9488',
+            secondary: '#0284C7',
+            accent: '#14B8A6',
+            violet: {
+              400: '#0D9488',
+              500: '#0F766E',
+              600: '#0284C7',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#081018] text-[#F8FAFC]">
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
+    <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
+      <a class="brand-logo flex items-center gap-2" href="index.html">
+        <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+        <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+      </a>
+
+      <!-- Desktop Links (Single Word) -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="index.html">Home</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="home-2.html">Home 2</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="about.html">About</a>
+        
+        <!-- Services Hover Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 text-[#CBD5E1] hover:text-[#0D9488] transition-colors focus:outline-none py-2 font-medium">
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="absolute left-0 mt-0 w-48 rounded-xl bg-[#0D1B2A]/95 border border-gray-800 shadow-2xl p-2 hidden group-hover:block hover:block transition-all z-50 backdrop-blur-md">
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="medicines.html">Injections</a>
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="prescriptions.html">Programs</a>
+            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="health-blog.html">Articles</a>
+          </div>
+        </div>
+
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="doctors.html">Doctors</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="contact.html">Contact</a>
+        <a class="text-[#CBD5E1] hover:text-[#0D9488] transition-colors font-medium" href="dashboard.html">Dashboard</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Theme Toggle Switch Button -->
+        <button id="theme-toggle" class="header-theme-switch" title="Toggle Theme">
+          <span class="track-icons flex justify-between items-center text-xs select-none w-full">
+            <i class="fa-regular fa-moon text-sky-400 text-xs opacity-75"></i>
+            <i class="fa-regular fa-sun text-amber-400 text-xs opacity-75"></i>
+          </span>
+          <span id="header-theme-thumb">
+            <i id="theme-icon" class="fa-regular fa-sun text-white"></i>
+          </span>
+        </button>
+
+        <!-- RTL/LTR Toggle Button -->
+        <button id="rtl-toggle" class="w-[38px] h-[38px] flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors bg-transparent" title="Toggle Layout Direction">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-sm"></i>
+        </button>
+        <a href="register.html"
+          class="h-[38px] px-5 inline-flex items-center justify-center rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all duration-300 font-medium text-sm text-decoration-none">
+          Register
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="lg:hidden text-[#F8FAFC] text-xl" id="mobile-menu-btn" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu"
+    class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-5 z-40 lg:hidden flex flex-col gap-3">
+    <a class="text-base text-[#CBD5E1]" href="index.html">Home</a>
+    <a class="text-base text-[#CBD5E1]" href="home-2.html">Home 2</a>
+    <a class="text-base text-[#CBD5E1]" href="about.html">About</a>
+    
+    <!-- Mobile Services sub-menu -->
+    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1">
+      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold mb-1">Services</span>
+      <a class="text-sm text-[#CBD5E1]" href="medicines.html">Injections</a>
+      <a class="text-sm text-[#CBD5E1]" href="prescriptions.html">Programs</a>
+      <a class="text-sm text-[#CBD5E1]" href="health-blog.html">Articles</a>
+    </div>
+
+    <a class="text-base text-[#CBD5E1]" href="doctors.html">Doctors</a>
+    <a class="text-base text-[#CBD5E1]" href="contact.html">Contact</a>
+    <a class="text-base text-[#CBD5E1]" href="dashboard.html">Dashboard</a>
+
+    <div class="h-[1px] bg-gray-800/80 my-2"></div>
+    
+    <!-- Mobile Settings Section -->
+    <div class="space-y-2">
+      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold block px-1">Settings</span>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="theme-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+          <span class="flex items-center gap-2">
+            <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#0D9488]"></i>
+            <span>Theme</span>
+          </span>
+          <span id="theme-switch-track" class="toggle-switch-track">
+            <span class="toggle-switch-thumb"></span>
+          </span>
+        </button>
+        <button id="rtl-toggle-mobile" class="mobile-settings-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-right-left text-[#0284C7]"></i>
+            <span>Direction</span>
+          </span>
+          <span id="rtl-switch-track" class="toggle-switch-track">
+            <span class="toggle-switch-thumb"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pt-2">
+      <a href="register.html"
+        class="w-full block text-center py-2.5 rounded-xl bg-[#0D9488] text-white font-medium hover:bg-opacity-95 transition-all text-decoration-none text-sm shadow-md shadow-[#0D9488]/20">
+        Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Page Header / Hero Section -->
+  <header class="pt-32 pb-20 relative overflow-hidden flex items-center">
+    <div class="bg-gradient-orb orb-secondary"></div>
+    <div class="container max-w-3xl mx-auto px-4 text-center space-y-6 relative z-10" data-aos="fade-up">
+      <span class="text-xs uppercase tracking-widest text-[#0284C7] font-heading font-semibold block">Nerve Blocks & Chronic Care</span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight mx-auto">
+        Chronic Pain Programs <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0284C7] to-[#0D9488] text-glow-secondary">& Nerve Block Therapies</span>
+      </h1>
+      <p class="text-[#CBD5E1] text-lg font-light leading-relaxed max-w-xl mx-auto">
+        Targeted sympathetic nerve blocks, occipital nerve procedures, and multidisciplinary functional rehabilitation tailored for complex regional pain and neuropathic conditions.
+      </p>
+      <div class="flex justify-center gap-3 pt-2">
+        <a href="#consultants-section" class="px-8 py-3 rounded-full bg-[#0D9488] text-white glow-btn-primary hover:bg-[#0D9488]/90 transition-all font-medium text-center w-full sm:w-auto text-decoration-none">
+          Meet Specialists
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Physician Profiles -->
+  <section id="consultants-section" class="container max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-2xl md:text-3xl font-heading">Pain Management Specialists</h2>
+      <p class="text-[#94A3B8] text-sm max-w-md mx-auto mt-2">Board-certified pain management physicians and anesthesiologists guiding your recovery.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+      <!-- Profile 1 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
+          <img src="https://t4.ftcdn.net/jpg/12/10/24/15/360_F_1210241577_0dn4ayO89QwXEwp3SxJS1SWW7pDBPhz0.jpg" alt="Dr. Marcus Vance" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#0284C7] font-heading font-semibold uppercase tracking-wider">Interventional Spine Director</span>
+          <h3 class="text-xl font-heading">Dr. Marcus Vance, MD</h3>
+          <p class="text-xs text-[#94A3B8]">15+ years experience. Specialist in fluoroscopic epidurals, facet RFA, and nerve blocks for spine radiculopathy.</p>
+        </div>
+      </div>
+
+      <!-- Profile 2 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
+          <img src="https://www.ferty9.com/wp-content/uploads/2025/04/dr-usha-brindhini-fertility-specialist-kukatpally.webp" alt="Dr. Elena Rostova" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#0D9488] font-heading font-semibold uppercase tracking-wider">Sympathetic Block & Anesthesia</span>
+          <h3 class="text-xl font-heading">Dr. Elena Rostova, MD, ABA</h3>
+          <p class="text-xs text-[#94A3B8]">Board-certified Anesthesiologist leading stellate ganglion blocks, celiac plexus blocks, and conscious sedation.</p>
+        </div>
+      </div>
+
+      <!-- Profile 3 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
+          <img src="https://img.magnific.com/free-photo/doctors-day-handsome-brunette-cute-guy-medical-gown-with-hands-pocket_140725-162944.jpg?semt=ais_hybrid&w=740&q=80" alt="Dr. Aris Thorne" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#14B8A6] font-heading font-semibold uppercase tracking-wider">Neuromodulation & Rehab</span>
+          <h3 class="text-xl font-heading">Dr. Aris Thorne, MD</h3>
+          <p class="text-xs text-[#94A3B8]">Specialist in spinal cord stimulator (SCS) trials, occipital nerve blocks, and functional chronic pain rehabilitation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Pathway -->
+  <section class="py-24 bg-[#0D1B2A]/40 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <h2 class="text-2xl md:text-3xl font-heading">Chronic Pain Care Pathway</h2>
+        <p class="text-[#94A3B8] text-sm max-w-md mx-auto">A structured four-step clinical framework to diagnose nerve targets, apply blocks, and restore function.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 relative items-stretch">
+        <!-- Phase 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://atlantabrainandspine.com/wp-content/uploads/2022/02/iStock-452627141-1024x683.jpg" alt="Neurological assessment"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#0D9488] text-white text-xs font-heading flex items-center justify-center shadow-lg">1</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">1. Neurological Assessment</h4>
+            <p class="text-xs text-[#94A3B8] leading-relaxed">Comprehensive nerve mapping, reflex testing, and radiological MRI review to locate nerve impingements.</p>
+          </div>
+        </div>
+        <!-- Phase 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="200">
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://orthorepair.com/wp-content/uploads/2026/01/How-Long-Do-Nerve-Blocks-Last-Managing-Expectations-For-Pain-Relief.jpg" alt="Diagnostic nerve block"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#0284C7] text-white text-xs font-heading flex items-center justify-center shadow-lg">2</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">2. Diagnostic Nerve Block</h4>
+            <p class="text-xs text-[#94A3B8] leading-relaxed">Targeted injection of local anesthetic around specific nerve plexuses to confirm exact pain pathways.</p>
+          </div>
+        </div>
+        <!-- Phase 3 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="300">
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://images.mid-day.com/images/images/2026/aug/SAS388_d.jpg" alt="Multidisciplinary rehab"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#14B8A6] text-white text-xs font-heading flex items-center justify-center shadow-lg">3</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">3. Multidisciplinary Program</h4>
+            <p class="text-xs text-[#94A3B8] leading-relaxed">Combining nerve blocks, physical therapy, non-opioid nerve modulators, and ergonomic adjustments.</p>
+          </div>
+        </div>
+        <!-- Phase 4 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="400">
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://pplelabs.com/wp-content/uploads/2025/11/edge-ai-in-wearable-915x611.png" alt="Outcome tracking"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#0D9488] text-white text-xs font-heading flex items-center justify-center shadow-lg">4</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">4. Outcome Journal Tracking</h4>
+            <p class="text-xs text-[#94A3B8] leading-relaxed">Digital pain scale VAS tracking and long-term relief monitoring inside the ApexPain patient portal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Care Packages -->
+  <section class="py-24 bg-[#0D1B2A]/30 border-y border-gray-800" data-aos="fade-up">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16">
+        <span class="text-xs uppercase tracking-widest text-[#0284C7] font-heading font-semibold">Program Tiers</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Specialized Program Options</h2>
+        <p class="text-[#94A3B8] max-w-xl mx-auto text-sm">Targeted interventional care packages designed around your diagnosis.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- Tier 1 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all">
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Diagnostic Nerve Evaluation</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">Intake & Block</span>
+            </div>
+            <p class="text-sm text-[#94A3B8]">Focused neurological exam, diagnostic nerve block, MRI review, and interventional treatment recommendations.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#CBD5E1]">
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Neurological Exam & MRI Audit</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Diagnostic Selective Nerve Block</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Fluoroscopy Guidance Included</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pre-Anesthesia Safety Review</li>
+            </ul>
+          </div>
+          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
+            Request Diagnostic Block
+          </a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-[#0D9488] relative hover:border-gray-750 transition-all">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0D9488] text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full whitespace-nowrap">Recommended</span>
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Chronic Pain Rehab Program</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">Multidisciplinary</span>
+            </div>
+            <p class="text-sm text-[#94A3B8]">Comprehensive therapeutic nerve blocks, physical therapy integration, non-opioid medication schedule, and portal logging.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#CBD5E1]">
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Therapeutic Sympathetic/Stellate Blocks</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Physical Therapy Coordination</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Non-Opioid Medication Schedule</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pain Journal Tracking Portal</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Monitored Anesthesia Care (MAC)</li>
+            </ul>
+          </div>
+          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full bg-[#0D9488] text-white glow-btn-primary hover:bg-[#0D9488]/90 transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
+            Enroll in Chronic Program
+          </a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0">
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Neuromodulation Program</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">SCS & Advanced</span>
+            </div>
+            <p class="text-sm text-[#94A3B8]">Spinal cord stimulation trial programming, lead placement, and long-term device optimization for severe nerve pain.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#CBD5E1]">
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Spinal Cord Stimulator Trial</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Trial Lead Placement Under Fluoroscopy</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Device Rep Programming</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Post-Op Recovery & Follow-up</li>
+            </ul>
+          </div>
+          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
+            Neuromodulation Consult
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="py-24 bg-[#081018]">
+    <div class="container max-w-xl mx-auto px-4">
+      <div class="glass-panel p-8 rounded-3xl space-y-6" data-aos="zoom-in">
+        <div class="text-center space-y-2">
+          <h2 class="text-2xl font-heading">Schedule A Specialist Consult</h2>
+          <p class="text-xs text-[#94A3B8]">Select your physician and procedure interest. Our clinical intake coordinator will reach out promptly.</p>
+        </div>
+        
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Consultation request submitted! Our clinical coordinator will call you within 24 hours.');">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#94A3B8] mb-1">Patient Full Name</label>
+            <input type="text" required class="w-full px-4 py-2.5 rounded-xl bg-[#081018] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#0284C7]">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#94A3B8] mb-1">Select Physician / Specialist</label>
+            <select class="w-full px-4 py-2.5 rounded-xl bg-[#081018] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#0284C7]">
+              <option>Dr. Marcus Vance, MD (Interventional Spine & Injections)</option>
+              <option>Dr. Elena Rostova, MD (Nerve Blocks & Anesthesia)</option>
+              <option>Dr. Aris Thorne, MD (Neuromodulation & Chronic Rehab)</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-[#94A3B8] mb-1">Preferred Date</label>
+              <input type="date" required class="w-full px-4 py-2.5 rounded-xl bg-[#081018] border border-gray-800 text-[#94A3B8] text-sm focus:outline-none focus:border-[#0284C7]">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-[#94A3B8] mb-1">Preferred Time Block</label>
+              <select class="w-full px-4 py-2.5 rounded-xl bg-[#081018] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#0284C7]">
+                <option>Morning (09:00 AM)</option>
+                <option>Afternoon (01:00 PM)</option>
+                <option>Late Afternoon (04:00 PM)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 transition-all font-medium text-sm">
+            Request Specialist Appointment
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Footer -->
+  <footer class="premium-footer pt-16 pb-12 text-sm text-[#94A3B8]">
+    <div class="bg-gradient-orb orb-primary opacity-[0.04] -bottom-16 -left-16 w-80 h-80"></div>
+    <div class="bg-gradient-orb orb-secondary opacity-[0.04] -top-16 -right-16 w-80 h-80"></div>
+
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 relative z-10">
+      <!-- Brand column -->
+      <div class="md:col-span-4 space-y-4">
+        <a class="brand-logo flex items-center gap-2" href="index.html">
+          <i class="fa-solid fa-heart-pulse text-[#2DD4BF] text-xl"></i>
+          <span>APEX<span class="text-[#0D9488]">PAIN</span></span>
+        </a>
+        <p class="text-xs leading-relaxed text-[#94A3B8] max-w-sm">
+          ApexPain is a premier pain management and anesthesiology clinic providing image-guided interventions, nerve block therapies, and personalized pain recovery programs.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="social-icon-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn youtube" title="YouTube">
+            <i class="fa-brands fa-youtube text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn facebook" title="Facebook">
+            <i class="fa-brands fa-facebook-f text-center"></i>
+          </a>
+          <a href="#" class="social-icon-btn linkedin" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in text-center"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick links (Single Word Labels) -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Services</h5>
+        <ul class="space-y-2 text-xs p-0 list-none">
+          <li><a href="medicines.html" class="hover:text-white transition-colors text-decoration-none">Injections</a></li>
+          <li><a href="prescriptions.html" class="hover:text-white transition-colors text-decoration-none">Programs</a></li>
+          <li><a href="health-blog.html" class="hover:text-white transition-colors text-decoration-none">Articles</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-colors text-decoration-none">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Navigation</h5>
+        <ul class="space-y-2 text-xs p-0 list-none">
+          <li><a href="index.html" class="hover:text-white transition-colors text-decoration-none">Home</a></li>
+          <li><a href="home-2.html" class="hover:text-white transition-colors text-decoration-none">Home 2</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors text-decoration-none">About</a></li>
+          <li><a href="doctors.html" class="hover:text-white transition-colors text-decoration-none">Doctors</a></li>
+          <li><a href="dashboard.html" class="hover:text-white transition-colors text-decoration-none">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Info column -->
+      <div class="md:col-span-4 space-y-3">
+        <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Clinic Location</h5>
+        <ul class="space-y-3 text-xs text-[#94A3B8] p-0 list-none">
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#0D9488]/10 border border-[#0D9488]/20 flex items-center justify-center text-[#0D9488] shrink-0 mt-0.5">
+              <i class="fa-solid fa-location-dot text-xs text-center"></i>
+            </div>
+            <span class="leading-relaxed text-[#CBD5E1]">
+              ApexPain Medical Center<br>
+              1400 Glenarm Place, Suite 400, Denver, CO 80202
+            </span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#0284C7]/10 border border-[#0284C7]/20 flex items-center justify-center text-[#0284C7] shrink-0">
+              <i class="fa-solid fa-phone text-xs text-center"></i>
+            </div>
+            <a href="tel:3035550140" class="text-[#CBD5E1] hover:text-white transition-colors text-decoration-none">
+              (303) 555-0140
+            </a>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#14B8A6]/10 border border-[#14B8A6]/20 flex items-center justify-center text-[#14B8A6] shrink-0">
+              <i class="fa-solid fa-envelope text-xs text-center"></i>
+            </div>
+            <a href="mailto:care@apexpain.com" class="text-[#CBD5E1] hover:text-white transition-colors text-decoration-none">
+              care@apexpain.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom border & copyright -->
+    <div class="container max-w-7xl mx-auto px-4 pt-8 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
+      <p class="text-[#64748B]">&copy; 2026 ApexPain Management & Anesthesiology Center. All Rights Reserved.</p>
+      <div class="flex gap-6 text-[#64748B]">
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">Terms</a>
+        <a href="#" class="hover:text-white transition-colors text-decoration-none">HIPAA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (Back to Top) -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-angle-up text-lg"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 800, once: true });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
