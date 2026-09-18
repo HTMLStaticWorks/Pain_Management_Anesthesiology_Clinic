@@ -149,39 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Page Highlighter
-  const currentPath = window.location.pathname;
-  let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-  if (!currentPage || currentPage === '/') {
-    currentPage = 'index.html';
-  }
-
-  const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href) {
-      const hrefPage = href.split('/').pop();
-      if (hrefPage === currentPage) {
-        link.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]', 'text-[#F3F4F6]');
-        link.classList.add('text-[#0D9488]', 'font-medium');
-      } else {
-        link.classList.remove('text-[#0D9488]', 'text-[#06B6D4]');
-      }
-    }
-  });
-
-  // Highlight Services parent button if any of its subpages is active
-  document.querySelectorAll('.group').forEach(group => {
-    const activeChild = group.querySelector('a.text-\\[\\#0D9488\\], a.text-\\[\\#06B6D4\\]');
-    if (activeChild) {
-      const btn = group.querySelector('button');
-      if (btn) {
-        btn.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]');
-        btn.classList.add('text-[#0D9488]', 'font-medium');
-      }
-    }
-  });
-
   // Inject icons into mobile menu links dynamically
   const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
   const iconMapping = {
@@ -203,10 +170,63 @@ document.addEventListener('DOMContentLoaded', () => {
       const iconClass = iconMapping[filename];
       if (iconClass) {
         const iconEl = document.createElement('i');
-        iconEl.className = iconClass;
+        iconEl.className = iconClass + ' mr-2 text-xs';
         link.insertBefore(iconEl, link.firstChild);
       }
     }
   });
+
+  // Active Page & Dropdown Highlighter
+  const currentPath = window.location.pathname;
+  let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1).split('#')[0].split('?')[0];
+  if (!currentPage || currentPage === '/') {
+    currentPage = 'index.html';
+  }
+
+  const servicePages = ['medicines.html', 'prescriptions.html', 'health-blog.html'];
+
+  // Highlight standard desktop & mobile nav links
+  const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href) {
+      const hrefPage = href.split('/').pop().split('#')[0].split('?')[0];
+      if (hrefPage === currentPage) {
+        link.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]', 'text-[#F3F4F6]', 'text-gray-400');
+        link.classList.add('text-[#0D9488]', 'font-bold', 'active', 'active-nav-link');
+
+        // Dropdown item styling in desktop dropdown
+        if (link.closest('.group') || link.classList.contains('dropdown-item')) {
+          link.classList.add('bg-[#0D9488]/15', 'text-[#0D9488]', 'font-semibold', 'dropdown-active-item');
+        }
+
+        // Mobile menu item active styling
+        if (link.closest('#mobile-menu')) {
+          link.classList.add('text-[#0D9488]', 'font-bold', 'active', 'mobile-active-item');
+        }
+      }
+    }
+  });
+
+  // Highlight Services parent dropdown button & mobile header if on any services page
+  if (servicePages.includes(currentPage)) {
+    // Desktop Services Dropdown Button
+    const servicesBtns = document.querySelectorAll('.services-dropdown-btn, nav button');
+    servicesBtns.forEach(btn => {
+      if (btn.textContent.includes('Services')) {
+        btn.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]');
+        btn.classList.add('text-[#0D9488]', 'font-semibold', 'active-services-btn');
+      }
+    });
+
+    // Mobile Services Header
+    const mobileServicesHeaders = document.querySelectorAll('.mobile-services-header, #mobile-menu span');
+    mobileServicesHeaders.forEach(header => {
+      if (header.textContent.trim().toLowerCase() === 'services') {
+        header.classList.remove('text-[#94A3B8]');
+        header.classList.add('text-[#0D9488]', 'font-bold');
+      }
+    });
+  }
 
 });

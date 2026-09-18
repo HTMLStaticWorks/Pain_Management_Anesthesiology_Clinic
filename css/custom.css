@@ -238,48 +238,54 @@ button,
   animation-play-state: paused;
 }
 
-/* Custom progress bar */
+/* Custom progress bar - hidden per design requirements */
 #scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  z-index: 9999;
-  width: 0%;
-  transition: width 0.1s ease-out;
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
 }
 
-/* Floating Action Button */
-.back-to-top {
+/* Floating Action Button (Back to Top) */
+.back-to-top,
+.back-to-top-btn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  background: linear-gradient(135deg, #0D9488, #0284C7);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.45);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  cursor: pointer;
+  outline: none;
 }
 
-.back-to-top.show {
+.back-to-top.show,
+.back-to-top-btn.show {
   opacity: 1;
   visibility: visible;
 }
 
-.back-to-top:hover {
-  transform: translateY(-3px);
-  background: var(--secondary);
-  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+.back-to-top:hover,
+.back-to-top-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  background: linear-gradient(135deg, #0F766E, #0369A1);
+  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.55);
+  color: #FFFFFF !important;
+}
+
+.back-to-top:active,
+.back-to-top-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 /* Pulse animation for active highlights */
@@ -3562,4 +3568,266 @@ nav #theme-toggle.header-theme-switch,
 
 [data-theme="light"] .faq-open .faq-answer {
   color: #334155 !important;
+}
+
+/* ==========================================================================
+   Contrast & Alignment Fixes (Light/Dark Mode Overrides)
+   ========================================================================== */
+
+/* 1. Specialized Program Options Recommended Button/Badge Light Mode Contrast Fix */
+[data-theme="light"] .program-recommended-badge,
+[data-theme="light"] .glass-panel .recommended-badge {
+  background-color: #0F766E !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3) !important;
+}
+
+[data-theme="light"] .glass-panel a.tier-btn-outline {
+  background-color: #0D9488 !important;
+  color: #FFFFFF !important;
+  border-color: #0D9488 !important;
+}
+
+[data-theme="light"] .glass-panel a.tier-btn-outline:hover {
+  background-color: #0F766E !important;
+  color: #FFFFFF !important;
+}
+
+/* 2. Procedure Relief & Outcome Metrics Dark Mode Contrast Fix */
+[data-theme="dark"] .outcome-row td,
+[data-theme="dark"] .table td {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .outcome-row td span.text-slate-100,
+[data-theme="dark"] .outcome-row td span.font-medium {
+  color: #F8FAFC !important;
+  font-weight: 600 !important;
+}
+
+/* 3. Table Heading Alignment Consistency in Light & Dark Mode */
+.table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.table th,
+.table td {
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+}
+
+.table th {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+[data-theme="light"] .table th {
+  color: #475569 !important;
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border-bottom: 2px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .table th {
+  color: #94A3B8 !important;
+  background-color: rgba(13, 27, 42, 0.6) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Ensure text alignment classes work identically in all themes */
+.table th.text-right, .table td.text-right { text-align: right !important; }
+.table th.text-left, .table td.text-left { text-align: left !important; }
+.table th.text-center, .table td.text-center { text-align: center !important; }
+
+/* 4. Doctors Page Consult Button Hover Effect */
+.book-consult-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #0D9488, #0F766E);
+  color: #FFFFFF !important;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.book-consult-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #0F766E, #0284C7);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  color: #FFFFFF !important;
+}
+
+.book-consult-btn i {
+  transition: transform 0.3s ease;
+}
+
+.book-consult-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Comprehensive Theme Contrast & Layout Overrides
+   ========================================================================== */
+
+/* 1. Specialized Program Options Recommended Badge Light Mode Contrast Fix */
+[data-theme="light"] .program-recommended-badge {
+  background-color: #0F766E !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  border: 1px solid #0D9488 !important;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35) !important;
+}
+
+/* 2. Health Blog Table & Pill Contrast Fixes (Dark & Light Mode) */
+/* Dark Mode Table Styling */
+[data-theme="dark"] .outcome-table,
+[data-theme="dark"] .outcome-table > tbody,
+[data-theme="dark"] .outcome-table > tbody > tr,
+[data-theme="dark"] .outcome-table > tbody > tr > td {
+  background-color: transparent !important;
+  background: transparent !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .outcome-row span.font-bold,
+[data-theme="dark"] .outcome-row td span {
+  color: #F8FAFC !important;
+}
+
+/* Light Mode Table Styling */
+[data-theme="light"] .outcome-table,
+[data-theme="light"] .outcome-table > tbody,
+[data-theme="light"] .outcome-table > tbody > tr,
+[data-theme="light"] .outcome-table > tbody > tr > td {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .outcome-row td span.font-bold,
+[data-theme="light"] .outcome-row td span.text-[#F8FAFC] {
+  color: #0F172A !important;
+}
+
+/* Light Mode Pills inside Outcome Metrics */
+[data-theme="light"] .outcome-pill-teal {
+  background-color: #E6F4F1 !important;
+  color: #047857 !important;
+  border: 1px solid #A7F3D0 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .outcome-pill-sky {
+  background-color: #E0F2FE !important;
+  color: #0369A1 !important;
+  border: 1px solid #BAE6FD !important;
+  font-weight: 700 !important;
+}
+
+/* 3. Dashboard Clinical Alerts Cards Light Mode Contrast */
+[data-theme="light"] .clinical-alert-card,
+[data-theme="light"] .clinical-alert-item {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05) !important;
+}
+
+[data-theme="light"] .clinical-alert-card h5,
+[data-theme="light"] .clinical-alert-item h5 {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .clinical-alert-card p,
+[data-theme="light"] .clinical-alert-item p {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+/* 4. Active Navigation Links & Dropdown Highlights */
+.services-dropdown-btn.active-services-btn,
+button.active-services-btn {
+  color: #0D9488 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .services-dropdown-btn.active-services-btn,
+[data-theme="light"] button.active-services-btn {
+  color: #0F766E !important;
+  font-weight: 700 !important;
+}
+
+.active-nav-link {
+  color: #0D9488 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .active-nav-link {
+  color: #0F766E !important;
+  font-weight: 700 !important;
+}
+
+.dropdown-active-item {
+  color: #0D9488 !important;
+  background-color: rgba(13, 148, 136, 0.15) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .dropdown-active-item {
+  color: #0F766E !important;
+  background-color: rgba(15, 118, 110, 0.14) !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile Menu Active Link Styling (Dark & Light Theme) */
+#mobile-menu a.active,
+#mobile-menu a.active-nav-link,
+#mobile-menu a.mobile-active-item,
+.mobile-active-item {
+  color: #0D9488 !important;
+  font-weight: 700 !important;
+  background-color: rgba(13, 148, 136, 0.16) !important;
+  border-left: 4px solid #0D9488 !important;
+  padding-left: 14px !important;
+  border-radius: 0 10px 10px 0 !important;
+  box-shadow: 0 2px 10px rgba(13, 148, 136, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+
+#mobile-menu a.active i,
+#mobile-menu a.active-nav-link i,
+#mobile-menu a.mobile-active-item i {
+  color: #2DD4BF !important;
+  opacity: 1 !important;
+}
+
+/* Light Mode Mobile Active Item */
+[data-theme="light"] #mobile-menu a.active,
+[data-theme="light"] #mobile-menu a.active-nav-link,
+[data-theme="light"] #mobile-menu a.mobile-active-item,
+[data-theme="light"] .mobile-active-item {
+  color: #0F766E !important;
+  font-weight: 700 !important;
+  background-color: rgba(15, 118, 110, 0.14) !important;
+  border-left: 4px solid #0F766E !important;
+  padding-left: 14px !important;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.15) !important;
+}
+
+[data-theme="light"] #mobile-menu a.active i,
+[data-theme="light"] #mobile-menu a.active-nav-link i,
+[data-theme="light"] #mobile-menu a.mobile-active-item i {
+  color: #0F766E !important;
+  opacity: 1 !important;
 }

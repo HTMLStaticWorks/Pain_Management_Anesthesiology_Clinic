@@ -51,9 +51,6 @@
 
 <body class="bg-[#081018] text-[#F8FAFC]">
 
-  <!-- Scroll Progress -->
-  <div id="scroll-progress"></div>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
     <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
@@ -70,12 +67,12 @@
         
         <!-- Services Hover Dropdown -->
         <div class="relative group">
-          <button class="flex items-center gap-1 text-[#CBD5E1] hover:text-[#0D9488] transition-colors focus:outline-none py-2 font-medium">
+          <button class="services-dropdown-btn flex items-center gap-1 text-[#0D9488] font-semibold hover:text-[#0D9488] transition-colors focus:outline-none py-2 active-services-btn">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
           </button>
           <div class="absolute left-0 mt-0 w-48 rounded-xl bg-[#0D1B2A]/95 border border-gray-800 shadow-2xl p-2 hidden group-hover:block hover:block transition-all z-50 backdrop-blur-md">
-            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="medicines.html">Injections</a>
+            <a class="block px-4 py-2 text-xs text-[#0D9488] bg-[#0D9488]/15 font-semibold rounded-lg transition-colors dropdown-active-item" href="medicines.html">Injections</a>
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="prescriptions.html">Programs</a>
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="health-blog.html">Articles</a>
           </div>
@@ -124,9 +121,9 @@
     <a class="text-base text-[#CBD5E1]" href="about.html">About</a>
     
     <!-- Mobile Services sub-menu -->
-    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1">
-      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold mb-1">Services</span>
-      <a class="text-sm text-[#CBD5E1]" href="medicines.html">Injections</a>
+    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1 mobile-services-menu">
+      <span class="text-[11px] uppercase tracking-wider text-[#0D9488] font-heading font-bold mb-1 mobile-services-header">Services</span>
+      <a class="text-sm text-[#0D9488] font-semibold pl-3 border-l-2 border-[#0D9488] bg-[#0D9488]/10 py-1 rounded-r-lg mobile-active-item" href="medicines.html">Injections</a>
       <a class="text-sm text-[#CBD5E1]" href="prescriptions.html">Programs</a>
       <a class="text-sm text-[#CBD5E1]" href="health-blog.html">Articles</a>
     </div>

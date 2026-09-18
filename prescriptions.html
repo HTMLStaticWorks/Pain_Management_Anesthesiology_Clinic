@@ -41,9 +41,6 @@
 </head>
 <body class="bg-[#081018] text-[#F8FAFC]">
 
-  <!-- Scroll Progress -->
-  <div id="scroll-progress"></div>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
     <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
@@ -60,13 +57,13 @@
         
         <!-- Services Hover Dropdown -->
         <div class="relative group">
-          <button class="flex items-center gap-1 text-[#CBD5E1] hover:text-[#0D9488] transition-colors focus:outline-none py-2 font-medium">
+          <button class="services-dropdown-btn flex items-center gap-1 text-[#0D9488] font-semibold hover:text-[#0D9488] transition-colors focus:outline-none py-2 active-services-btn">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
           </button>
           <div class="absolute left-0 mt-0 w-48 rounded-xl bg-[#0D1B2A]/95 border border-gray-800 shadow-2xl p-2 hidden group-hover:block hover:block transition-all z-50 backdrop-blur-md">
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="medicines.html">Injections</a>
-            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="prescriptions.html">Programs</a>
+            <a class="block px-4 py-2 text-xs text-[#0D9488] bg-[#0D9488]/15 font-semibold rounded-lg transition-colors dropdown-active-item" href="prescriptions.html">Programs</a>
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="health-blog.html">Articles</a>
           </div>
         </div>
@@ -114,10 +111,10 @@
     <a class="text-base text-[#CBD5E1]" href="about.html">About</a>
     
     <!-- Mobile Services sub-menu -->
-    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1">
-      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold mb-1">Services</span>
+    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1 mobile-services-menu">
+      <span class="text-[11px] uppercase tracking-wider text-[#0D9488] font-heading font-bold mb-1 mobile-services-header">Services</span>
       <a class="text-sm text-[#CBD5E1]" href="medicines.html">Injections</a>
-      <a class="text-sm text-[#CBD5E1]" href="prescriptions.html">Programs</a>
+      <a class="text-sm text-[#0D9488] font-semibold pl-3 border-l-2 border-[#0D9488] bg-[#0D9488]/10 py-1 rounded-r-lg mobile-active-item" href="prescriptions.html">Programs</a>
       <a class="text-sm text-[#CBD5E1]" href="health-blog.html">Articles</a>
     </div>
 
@@ -205,8 +202,8 @@
           <img src="https://www.ferty9.com/wp-content/uploads/2025/04/dr-usha-brindhini-fertility-specialist-kukatpally.webp" alt="Dr. Elena Rostova" class="w-full h-full object-cover">
         </div>
         <div class="p-6 space-y-3">
-          <span class="text-xs text-[#0D9488] font-heading font-semibold uppercase tracking-wider">Sympathetic Block & Anesthesia</span>
-          <h3 class="text-xl font-heading">Dr. Elena Rostova, MD, ABA</h3>
+          <span class="text-xs text-[#0D9488] font-heading font-semibold uppercase tracking-wider">Sympathetic Anesthesia</span>
+          <h3 class="text-xl font-heading">Dr. Elena Rostova, ABA</h3>
           <p class="text-xs text-[#94A3B8]">Board-certified Anesthesiologist leading stellate ganglion blocks, celiac plexus blocks, and conscious sedation.</p>
         </div>
       </div>
@@ -282,7 +279,7 @@
             <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#0D9488] text-white text-xs font-heading flex items-center justify-center shadow-lg">4</span>
           </div>
           <div class="p-5 space-y-2 flex-1">
-            <h4 class="text-base font-heading">4. Outcome Journal Tracking</h4>
+            <h4 class="text-base font-heading">4.Journal Tracking</h4>
             <p class="text-xs text-[#94A3B8] leading-relaxed">Digital pain scale VAS tracking and long-term relief monitoring inside the ApexPain patient portal.</p>
           </div>
         </div>
@@ -310,37 +307,37 @@
             <p class="text-sm text-[#94A3B8]">Focused neurological exam, diagnostic nerve block, MRI review, and interventional treatment recommendations.</p>
             <div class="h-[1px] bg-gray-800 my-4"></div>
             <ul class="space-y-2 text-sm text-[#CBD5E1]">
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Neurological Exam & MRI Audit</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Diagnostic Selective Nerve Block</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Fluoroscopy Guidance Included</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pre-Anesthesia Safety Review</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Neurological Exam & MRI </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Diagnostic Selective Nerve </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Fluoroscopy Guidance </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pre-Anesthesia Safety </li>
             </ul>
           </div>
-          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
-            Request Diagnostic Block
+          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488] text-white hover:bg-[#0F766E] transition-all text-xs font-semibold uppercase tracking-wider text-decoration-none tier-btn-outline shadow-sm">
+            Request Diagnostic
           </a>
         </div>
 
         <!-- Tier 2 -->
         <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-[#0D9488] relative hover:border-gray-750 transition-all">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0D9488] text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full whitespace-nowrap">Recommended</span>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0D9488] text-white text-[10px] uppercase font-bold tracking-wider px-3.5 py-1 rounded-full whitespace-nowrap shadow-md program-recommended-badge">Recommended</span>
           <div class="space-y-4">
             <h3 class="text-xl font-heading">Chronic Pain Rehab Program</h3>
             <div class="flex items-baseline gap-1">
               <span class="text-3xl font-heading">Multidisciplinary</span>
             </div>
-            <p class="text-sm text-[#94A3B8]">Comprehensive therapeutic nerve blocks, physical therapy integration, non-opioid medication schedule, and portal logging.</p>
+            <p class="text-sm text-[#94A3B8]">Comprehensive therapeutic nerve blocks, physical therapy integration, non-opioid medication  logging.</p>
             <div class="h-[1px] bg-gray-800 my-4"></div>
             <ul class="space-y-2 text-sm text-[#CBD5E1]">
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Therapeutic Sympathetic/Stellate Blocks</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Physical Therapy Coordination</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Non-Opioid Medication Schedule</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pain Journal Tracking Portal</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Monitored Anesthesia Care (MAC)</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i> Sympathetic/Stellate </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Physical Therapy </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Non-Opioid Medication </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Pain Journal Tracking </li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Monitored  Care (MAC)</li>
             </ul>
           </div>
           <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full bg-[#0D9488] text-white glow-btn-primary hover:bg-[#0D9488]/90 transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
-            Enroll in Chronic Program
+            Enroll in Program
           </a>
         </div>
 
@@ -349,19 +346,19 @@
           <div class="space-y-4">
             <h3 class="text-xl font-heading">Neuromodulation Program</h3>
             <div class="flex items-baseline gap-1">
-              <span class="text-3xl font-heading">SCS & Advanced</span>
+              <span class="text-3xl font-heading">Advanced</span>
             </div>
-            <p class="text-sm text-[#94A3B8]">Spinal cord stimulation trial programming, lead placement, and long-term device optimization for severe nerve pain.</p>
+            <p class="text-sm text-[#94A3B8]">Spinal cord stimulation trial programming, lead placement, and long-term device optimization for severe pain.</p>
             <div class="h-[1px] bg-gray-800 my-4"></div>
             <ul class="space-y-2 text-sm text-[#CBD5E1]">
               <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Spinal Cord Stimulator Trial</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Trial Lead Placement Under Fluoroscopy</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Trial Lead  Under Fluoroscopy</li>
               <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Device Rep Programming</li>
-              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Post-Op Recovery & Follow-up</li>
+              <li><i class="fa-solid fa-check text-[#0D9488] mr-2"></i>Post-Op & Follow-up</li>
             </ul>
           </div>
-          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488]/10 text-[#F8FAFC] hover:bg-[#0D9488] transition-all text-xs font-medium uppercase tracking-wider text-decoration-none">
-            Neuromodulation Consult
+          <a href="contact.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#0D9488] bg-[#0D9488] text-white hover:bg-[#0F766E] transition-all text-xs font-semibold uppercase tracking-wider text-decoration-none tier-btn-outline shadow-sm">
+            Neuromodule Consult
           </a>
         </div>
       </div>
@@ -511,8 +508,8 @@
   </footer>
 
   <!-- Floating Action Button (Back to Top) -->
-  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
-    <i class="fa-solid fa-angle-up text-lg"></i>
+  <button id="back-to-top" class="back-to-top" title="Back to top" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

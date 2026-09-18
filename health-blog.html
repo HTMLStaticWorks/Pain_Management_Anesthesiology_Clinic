@@ -44,9 +44,6 @@
 
 <body class="bg-[#081018] text-[#F8FAFC]">
 
-  <!-- Scroll Progress -->
-  <div id="scroll-progress"></div>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
     <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
@@ -63,14 +60,14 @@
         
         <!-- Services Hover Dropdown -->
         <div class="relative group">
-          <button class="flex items-center gap-1 text-[#CBD5E1] hover:text-[#0D9488] transition-colors focus:outline-none py-2 font-medium">
+          <button class="services-dropdown-btn flex items-center gap-1 text-[#0D9488] font-semibold hover:text-[#0D9488] transition-colors focus:outline-none py-2 active-services-btn">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
           </button>
           <div class="absolute left-0 mt-0 w-48 rounded-xl bg-[#0D1B2A]/95 border border-gray-800 shadow-2xl p-2 hidden group-hover:block hover:block transition-all z-50 backdrop-blur-md">
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="medicines.html">Injections</a>
             <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="prescriptions.html">Programs</a>
-            <a class="block px-4 py-2 text-xs text-[#CBD5E1] hover:text-[#0D9488] hover:bg-gray-800/50 rounded-lg transition-colors" href="health-blog.html">Articles</a>
+            <a class="block px-4 py-2 text-xs text-[#0D9488] bg-[#0D9488]/15 font-semibold rounded-lg transition-colors dropdown-active-item" href="health-blog.html">Articles</a>
           </div>
         </div>
 
@@ -117,11 +114,11 @@
     <a class="text-base text-[#CBD5E1]" href="about.html">About</a>
     
     <!-- Mobile Services sub-menu -->
-    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1">
-      <span class="text-[11px] uppercase tracking-wider text-[#94A3B8] font-heading font-semibold mb-1">Services</span>
+    <div class="flex flex-col gap-1 pl-3 border-l border-[#0D9488]/30 my-1 mobile-services-menu">
+      <span class="text-[11px] uppercase tracking-wider text-[#0D9488] font-heading font-bold mb-1 mobile-services-header">Services</span>
       <a class="text-sm text-[#CBD5E1]" href="medicines.html">Injections</a>
       <a class="text-sm text-[#CBD5E1]" href="prescriptions.html">Programs</a>
-      <a class="text-sm text-[#CBD5E1]" href="health-blog.html">Articles</a>
+      <a class="text-sm text-[#0D9488] font-semibold pl-3 border-l-2 border-[#0D9488] bg-[#0D9488]/10 py-1 rounded-r-lg mobile-active-item" href="health-blog.html">Articles</a>
     </div>
 
     <a class="text-base text-[#CBD5E1]" href="doctors.html">Doctors</a>
@@ -196,13 +193,13 @@
 
         <div class="glass-panel rounded-2xl overflow-hidden border border-gray-800/80">
           <div class="overflow-x-auto custom-table-scrollbar">
-            <table class="table mb-0 text-xs w-full min-w-[760px] border-collapse">
+            <table class="table outcome-table mb-0 text-xs w-full min-w-[760px] border-collapse">
               <thead>
-                <tr class="border-b border-gray-800/60 bg-[#0D1B2A]/40 text-[#94A3B8]">
-                  <th class="py-3.5 px-5 text-left font-heading font-semibold uppercase tracking-wider text-[11px] w-24">Cohort</th>
-                  <th class="py-3.5 px-5 text-left font-heading font-semibold uppercase tracking-wider text-[11px]">Target Condition</th>
-                  <th class="py-3.5 px-5 text-center font-heading font-semibold uppercase tracking-wider text-[11px]">Avg. Pain Reduction</th>
-                  <th class="py-3.5 px-5 text-right font-heading font-semibold uppercase tracking-wider text-[11px]">Sustained Duration</th>
+                <tr class="border-b border-gray-800/60 bg-[#0D1B2A]/60 text-[#CBD5E1]">
+                  <th class="py-3.5 px-5 text-left font-heading font-semibold uppercase tracking-wider text-[11px] w-24 text-[#0284C7]">Cohort</th>
+                  <th class="py-3.5 px-5 text-left font-heading font-bold uppercase tracking-wider text-[11px] text-[#F8FAFC]">Target Condition</th>
+                  <th class="py-3.5 px-5 text-center font-heading font-semibold uppercase tracking-wider text-[11px] text-[#CBD5E1]">Avg. Pain Reduction</th>
+                  <th class="py-3.5 px-5 text-right font-heading font-semibold uppercase tracking-wider text-[11px] text-[#CBD5E1]">Sustained Duration</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-800/40">
@@ -210,15 +207,15 @@
                 <tr class="outcome-row transition-colors">
                   <td class="py-4 px-5 font-heading text-[#0284C7] font-semibold text-sm">#1</td>
                   <td class="py-4 px-5 text-left">
-                    <span class="font-medium text-slate-100 text-sm block">Steroid Cohort</span>
+                    <span class="font-bold text-[#F8FAFC] text-sm block">Steroid Cohort (Lumbar Disc)</span>
                   </td>
                   <td class="py-4 px-5 text-center">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D9488]/15 text-[#0D9488] border border-[#0D9488]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D9488]/20 text-[#2DD4BF] border border-[#0D9488]/40 font-semibold text-xs outcome-pill-teal">
                       <i class="fa-solid fa-arrow-down-long text-[10px]"></i> 88.4% VAS Drop
                     </span>
                   </td>
                   <td class="py-4 px-5 text-right">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/15 text-[#0284C7] border border-[#0284C7]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/20 text-[#38BDF8] border border-[#0284C7]/40 font-semibold text-xs outcome-pill-sky">
                       <i class="fa-regular fa-clock text-[10px]"></i> 6 - 9 Months
                     </span>
                   </td>
@@ -228,15 +225,15 @@
                 <tr class="outcome-row transition-colors">
                   <td class="py-4 px-5 font-heading text-[#0284C7] font-semibold text-sm">#2</td>
                   <td class="py-4 px-5 text-left">
-                    <span class="font-medium text-slate-100 text-sm block">Cervical Facet</span>
+                    <span class="font-bold text-[#F8FAFC] text-sm block">Cervical Facet Joint</span>
                   </td>
                   <td class="py-4 px-5 text-center">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D9488]/15 text-[#0D9488] border border-[#0D9488]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D9488]/20 text-[#2DD4BF] border border-[#0D9488]/40 font-semibold text-xs outcome-pill-teal">
                       <i class="fa-solid fa-arrow-up-long text-[10px]"></i> 92.1% Mobility
                     </span>
                   </td>
                   <td class="py-4 px-5 text-right">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/15 text-[#0284C7] border border-[#0284C7]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/20 text-[#38BDF8] border border-[#0284C7]/40 font-semibold text-xs outcome-pill-sky">
                       <i class="fa-regular fa-clock text-[10px]"></i> 9 - 12 Months
                     </span>
                   </td>
@@ -246,15 +243,15 @@
                 <tr class="outcome-row transition-colors">
                   <td class="py-4 px-5 font-heading text-[#0284C7] font-semibold text-sm">#3</td>
                   <td class="py-4 px-5 text-left">
-                    <span class="font-medium text-slate-100 text-sm block">Stellate Ganglion</span>
+                    <span class="font-bold text-[#F8FAFC] text-sm block">Stellate Ganglion Nerve</span>
                   </td>
                   <td class="py-4 px-5 text-center">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14B8A6]/15 text-[#14B8A6] border border-[#14B8A6]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14B8A6]/20 text-[#2DD4BF] border border-[#14B8A6]/40 font-semibold text-xs outcome-pill-teal">
                       <i class="fa-solid fa-heart-pulse text-[10px]"></i> 85.0% Relief
                     </span>
                   </td>
                   <td class="py-4 px-5 text-right">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/15 text-[#0284C7] border border-[#0284C7]/30 font-semibold text-xs">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0284C7]/20 text-[#38BDF8] border border-[#0284C7]/40 font-semibold text-xs outcome-pill-sky">
                       <i class="fa-regular fa-clock text-[10px]"></i> 4 - 6 Months
                     </span>
                   </td>
@@ -267,21 +264,21 @@
 
       <!-- Right side: Sidebar events -->
       <div class="lg:col-span-4 space-y-6 min-w-0 w-full">
-        <h2 class="text-xl sm:text-2xl font-heading flex items-center gap-2">
+        <h2 class="text-xl sm:text-2xl font-heading flex items-center justify-center text-center gap-2 mx-auto">
           <i class="fa-solid fa-calendar text-[#0D9488]"></i>
           Patient Education Workshops
         </h2>
 
         <div class="space-y-4">
-          <div class="glass-panel p-4 rounded-xl space-y-2">
-            <span class="text-[10px] bg-[#0D9488]/20 text-[#0D9488] px-2 py-0.5 rounded uppercase font-semibold">Spine Health</span>
-            <h4 class="text-sm font-heading">Understanding Herniated Discs & Sciatica</h4>
-            <p class="text-xs text-[#94A3B8]"><i class="fa-solid fa-clock mr-1"></i>October 12 • 18:00</p>
+          <div class="glass-panel p-5 rounded-2xl space-y-2 flex flex-col items-start text-left w-full">
+            <span class="text-[10px] bg-[#0D9488]/20 text-[#0D9488] px-2.5 py-1 rounded uppercase font-bold tracking-wider">Spine Health</span>
+            <h4 class="text-sm font-heading font-semibold text-[#F8FAFC] mt-1">Understanding Herniated Discs & Sciatica</h4>
+            <p class="text-xs text-[#94A3B8] flex items-center gap-1.5 mt-1"><i class="fa-solid fa-clock text-[#0D9488]"></i>October 12 • 18:00</p>
           </div>
-          <div class="glass-panel p-4 rounded-xl space-y-2">
-            <span class="text-[10px] bg-[#0284C7]/20 text-[#0284C7] px-2 py-0.5 rounded uppercase font-semibold">Injections</span>
-            <h4 class="text-sm font-heading">What to Expect During Fluoroscopy Procedures</h4>
-            <p class="text-xs text-[#94A3B8]"><i class="fa-solid fa-clock mr-1"></i>October 20 • 15:00</p>
+          <div class="glass-panel p-5 rounded-2xl space-y-2 flex flex-col items-start text-left w-full">
+            <span class="text-[10px] bg-[#0284C7]/20 text-[#0284C7] px-2.5 py-1 rounded uppercase font-bold tracking-wider">Injections</span>
+            <h4 class="text-sm font-heading font-semibold text-[#F8FAFC] mt-1">What to Expect During Fluoroscopy Procedures</h4>
+            <p class="text-xs text-[#94A3B8] flex items-center gap-1.5 mt-1"><i class="fa-solid fa-clock text-[#0284C7]"></i>October 20 • 15:00</p>
           </div>
         </div>
       </div>
@@ -437,8 +434,8 @@
   </footer>
 
   <!-- Floating Action Button (Back to Top) -->
-  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
-    <i class="fa-solid fa-angle-up text-lg"></i>
+  <button id="back-to-top" class="back-to-top" title="Back to top" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
