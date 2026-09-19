@@ -415,7 +415,7 @@ button,
 }
 
 /* Premium CTA Button Hover Transitions & Scale effects */
-a[href="register.html"],
+nav a[href="register.html"],
 a.bg-\[\#10B981\],
 button.bg-\[\#10B981\],
 button[type="submit"],
@@ -423,7 +423,7 @@ button[type="submit"],
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-a[href="register.html"]:hover,
+nav a[href="register.html"]:hover,
 a.bg-\[\#10B981\]:hover,
 button.bg-\[\#10B981\]:hover,
 button[type="submit"]:hover,
@@ -1414,8 +1414,18 @@ footer .grid>div .flex.w-7.h-7 i {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  transform: none !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 1rem !important;
+  transform: translateY(-50%) !important;
   transition: color 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  z-index: 10 !important;
 }
 
 .password-toggle-btn:hover {
@@ -1437,27 +1447,65 @@ footer .grid>div .flex.w-7.h-7 i {
   /* White color in dark mode */
 }
 
-/* 5. Auth Card Bottom Action Links Hover Effects */
+/* 5. Auth Card Bottom Action Links Styling & Hover Effects */
 .auth-card a:not(.brand-logo):not(.social-login-btn) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transform: none !important;
   transition: color 0.2s ease, text-decoration 0.2s ease !important;
 }
 
-.auth-card a:not(.brand-logo):not(.social-login-btn):hover {
+.auth-card a:not(.brand-logo):not(.social-login-btn):hover,
+.auth-card a:not(.brand-logo):not(.social-login-btn):focus,
+.auth-card a:not(.brand-logo):not(.social-login-btn):active {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transform: none !important;
   text-decoration: underline !important;
 }
 
-[data-theme="dark"] .auth-card a:not(.brand-logo):not(.social-login-btn):hover {
-  color: #FFFFFF !important;
+/* Specific resting state colors for Register here / Log in here links */
+.auth-card a[href="register.html"],
+.auth-card a[href="login.html"],
+.auth-card a.text-\[\#0284C7\] {
+  color: #38BDF8 !important; /* Crisp Sky Blue in Dark Mode */
+  font-weight: 600 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-[data-theme="light"] .auth-card a:not(.brand-logo):not(.social-login-btn):hover {
-  color: var(--text-primary) !important;
+[data-theme="light"] .auth-card a[href="register.html"],
+[data-theme="light"] .auth-card a[href="login.html"],
+[data-theme="light"] .auth-card a.text-\[\#0284C7\] {
+  color: #0369A1 !important; /* Deep Rich Blue for Maximum Contrast on White in Light Mode */
+  font-weight: 600 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-/* Specifically for primary cyan-colored register/login bottom links */
-.auth-card a.text-\[\#06B6D4\]:hover {
-  color: var(--primary) !important;
-  /* Hover to premium brand green */
+/* Specific hover colors */
+.auth-card a[href="register.html"]:hover,
+.auth-card a[href="login.html"]:hover,
+.auth-card a.text-\[\#0284C7\]:hover {
+  color: #0D9488 !important; /* Brand Teal on hover */
+  text-decoration: underline !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+[data-theme="light"] .auth-card a[href="register.html"]:hover,
+[data-theme="light"] .auth-card a[href="login.html"]:hover,
+[data-theme="light"] .auth-card a.text-\[\#0284C7\]:hover {
+  color: #0F766E !important; /* Deep Brand Teal on hover in Light Mode */
+  text-decoration: underline !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Ensure mobile hamburger menu options are start-aligned (vertically straight line) in both LTR & RTL */
@@ -2670,7 +2718,7 @@ footer .social-icon-btn:hover i,
 /* Password Toggle Icon placement in RTL */
 [dir="rtl"] .password-toggle-btn {
   right: auto !important;
-  left: 12px !important;
+  left: 1rem !important;
 }
 
 [dir="rtl"] input.pr-10 {
