@@ -2,10 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Theme Manager
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  const themeIcon = document.getElementById('theme-icon');
-  const themeIconMobile = document.getElementById('theme-icon-mobile');
   const currentTheme = localStorage.getItem('theme') || 'dark';
 
   // Apply initial theme
@@ -21,15 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     updateThemeIcon(newTheme);
   }
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', toggleTheme);
-  }
-  if (themeToggleMobileBtn) {
-    themeToggleMobileBtn.addEventListener('click', toggleTheme);
-  }
+  // Attach listener to ALL theme toggle buttons (desktop, header switch, mobile)
+  const allThemeButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile, .header-theme-switch, [id^="theme-toggle"]');
+  allThemeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  });
 
   function updateThemeIcon(theme) {
-    [themeIcon, themeIconMobile].forEach(icon => {
+    const themeIcons = document.querySelectorAll('#theme-icon, #theme-icon-mobile, .theme-icon');
+    themeIcons.forEach(icon => {
       if (!icon) return;
       if (theme === 'light') {
         icon.className = 'fa-regular fa-moon text-xs text-white';
@@ -39,19 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Update Mobile Switch Track UI
-    const themeSwitchTrack = document.getElementById('theme-switch-track');
-    if (themeSwitchTrack) {
+    const themeSwitchTracks = document.querySelectorAll('#theme-switch-track, .theme-switch-track');
+    themeSwitchTracks.forEach(track => {
       if (theme === 'dark') {
-        themeSwitchTrack.classList.add('active-theme');
+        track.classList.add('active-theme');
       } else {
-        themeSwitchTrack.classList.remove('active-theme');
+        track.classList.remove('active-theme');
       }
-    }
+    });
   }
 
   // RTL Manager
-  const rtlToggleBtn = document.getElementById('rtl-toggle');
-  const rtlToggleMobileBtn = document.getElementById('rtl-toggle-mobile');
   const initialIsRtl = localStorage.getItem('rtl') === 'true';
 
   // Apply initial RTL direction
@@ -59,14 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateRtlState(dir) {
     document.documentElement.setAttribute('dir', dir);
-    const rtlSwitchTrack = document.getElementById('rtl-switch-track');
-    if (rtlSwitchTrack) {
+    const rtlSwitchTracks = document.querySelectorAll('#rtl-switch-track, .rtl-switch-track');
+    rtlSwitchTracks.forEach(track => {
       if (dir === 'rtl') {
-        rtlSwitchTrack.classList.add('active-rtl');
+        track.classList.add('active-rtl');
       } else {
-        rtlSwitchTrack.classList.remove('active-rtl');
+        track.classList.remove('active-rtl');
       }
-    }
+    });
+
+    const rtlIcons = document.querySelectorAll('#rtl-icon, .rtl-icon');
+    rtlIcons.forEach(icon => {
+      if (dir === 'rtl') {
+        icon.classList.add('text-[#0D9488]', 'rotate-180');
+      } else {
+        icon.classList.remove('text-[#0D9488]', 'rotate-180');
+      }
+    });
   }
 
   function toggleRtl() {
@@ -76,12 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateRtlState(newDir);
   }
 
-  if (rtlToggleBtn) {
-    rtlToggleBtn.addEventListener('click', toggleRtl);
-  }
-  if (rtlToggleMobileBtn) {
-    rtlToggleMobileBtn.addEventListener('click', toggleRtl);
-  }
+  // Attach listener to ALL RTL toggle buttons
+  const allRtlButtons = document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile, [id^="rtl-toggle"]');
+  allRtlButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleRtl();
+    });
+  });
+
 
   // Scroll Progress Indicator
   window.addEventListener('scroll', () => {
@@ -192,8 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (href) {
       const hrefPage = href.split('/').pop().split('#')[0].split('?')[0];
       if (hrefPage === currentPage) {
-        link.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]', 'text-[#F3F4F6]', 'text-gray-400');
+        link.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]', 'text-[#F3F4F6]', 'text-gray-300', 'text-gray-400', 'font-medium');
         link.classList.add('text-[#0D9488]', 'font-bold', 'active', 'active-nav-link');
+        link.style.color = '#0D9488';
 
         // Dropdown item styling in desktop dropdown
         if (link.closest('.group') || link.classList.contains('dropdown-item')) {
@@ -229,4 +239,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Home 2 Quick Procedure Diagnostic Matcher
+  const symptomSelect = document.getElementById('symptom-select');
+  const procedureRec = document.getElementById('procedure-recommendation');
+  if (symptomSelect && procedureRec) {
+    procedureRec.style.transition = 'opacity 0.15s ease';
+    const procedureMap = {
+      'sciatica': '<span class="text-[#0D9488] font-semibold">Recommended:</span> Transforaminal Epidural (TFESI)',
+      'herniated': '<span class="text-[#0D9488] font-semibold">Recommended:</span> Cervical / Lumbar ESI & Disc Decompression',
+      'facet': '<span class="text-[#0D9488] font-semibold">Recommended:</span> Facet Medial Branch Block & Radiofrequency Ablation',
+      'trigeminal': '<span class="text-[#0D9488] font-semibold">Recommended:</span> Occipital Nerve Therapy & Pulsed Neurotomy',
+      'failed-back': '<span class="text-[#0D9488] font-semibold">Recommended:</span> Spinal Cord Stimulation (SCS) Trial'
+    };
+
+    symptomSelect.addEventListener('change', (e) => {
+      const selected = e.target.value;
+      if (procedureMap[selected]) {
+        procedureRec.style.opacity = '0';
+        setTimeout(() => {
+          procedureRec.innerHTML = procedureMap[selected];
+          procedureRec.style.opacity = '1';
+        }, 150);
+      }
+    });
+  }
+
 });
+

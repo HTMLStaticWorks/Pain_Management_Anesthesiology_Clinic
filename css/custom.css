@@ -1071,49 +1071,49 @@ footer .brand-logo,
 }
 
 /* Outer span (APEX) text color */
-.brand-logo > span,
-a.brand-logo > span,
-.auth-card .brand-logo > span,
-aside .brand-logo > span,
-header .brand-logo > span,
-footer .brand-logo > span {
+.brand-logo>span,
+a.brand-logo>span,
+.auth-card .brand-logo>span,
+aside .brand-logo>span,
+header .brand-logo>span,
+footer .brand-logo>span {
   font-weight: 700 !important;
   color: #F8FAFC !important;
 }
 
-[data-theme="light"] .brand-logo > span,
-[data-theme="light"] a.brand-logo > span,
-[data-theme="light"] .auth-card .brand-logo > span,
-[data-theme="light"] aside .brand-logo > span,
-[data-theme="light"] header .brand-logo > span,
-[data-theme="light"] footer .brand-logo > span {
+[data-theme="light"] .brand-logo>span,
+[data-theme="light"] a.brand-logo>span,
+[data-theme="light"] .auth-card .brand-logo>span,
+[data-theme="light"] aside .brand-logo>span,
+[data-theme="light"] header .brand-logo>span,
+[data-theme="light"] footer .brand-logo>span {
   color: #0F172A !important;
 }
 
 /* Inner span (PAIN) text color - MUST ALWAYS BE TEAL #0D9488 */
-.brand-logo > span > span,
+.brand-logo>span>span,
 .brand-logo span.text-\[\#0D9488\],
 .brand-logo .brand-green,
 .brand-logo .brand-teal,
-a.brand-logo > span > span,
+a.brand-logo>span>span,
 a.brand-logo span.text-\[\#0D9488\],
-.auth-card .brand-logo > span > span,
+.auth-card .brand-logo>span>span,
 .auth-card .brand-logo span.text-\[\#0D9488\],
-aside .brand-logo > span > span,
+aside .brand-logo>span>span,
 aside .brand-logo span.text-\[\#0D9488\],
-header .brand-logo > span > span,
+header .brand-logo>span>span,
 header .brand-logo span.text-\[\#0D9488\],
-footer .brand-logo > span > span,
+footer .brand-logo>span>span,
 footer .brand-logo span.text-\[\#0D9488\],
-[data-theme="light"] .brand-logo > span > span,
+[data-theme="light"] .brand-logo>span>span,
 [data-theme="light"] .brand-logo span.text-\[\#0D9488\],
-[data-theme="light"] .auth-card .brand-logo > span > span,
+[data-theme="light"] .auth-card .brand-logo>span>span,
 [data-theme="light"] .auth-card .brand-logo span.text-\[\#0D9488\],
-[data-theme="light"] aside .brand-logo > span > span,
+[data-theme="light"] aside .brand-logo>span>span,
 [data-theme="light"] aside .brand-logo span.text-\[\#0D9488\],
-[data-theme="light"] header .brand-logo > span > span,
+[data-theme="light"] header .brand-logo>span>span,
 [data-theme="light"] header .brand-logo span.text-\[\#0D9488\],
-[data-theme="light"] footer .brand-logo > span > span,
+[data-theme="light"] footer .brand-logo>span>span,
 [data-theme="light"] footer .brand-logo span.text-\[\#0D9488\] {
   color: #0D9488 !important;
   font-weight: 700 !important;
@@ -1324,7 +1324,8 @@ footer .grid>div .flex.w-7.h-7 i {
 .auth-remember-forgot label span {
   font-size: 0.75rem !important;
   color: var(--text-muted) !important;
-  text-transform: none !important; /* Changed from uppercase to sentence case to match Forgot password link style */
+  text-transform: none !important;
+  /* Changed from uppercase to sentence case to match Forgot password link style */
   letter-spacing: 0.02em !important;
   display: inline !important;
   line-height: 1.25rem !important;
@@ -1332,7 +1333,8 @@ footer .grid>div .flex.w-7.h-7 i {
 
 .auth-remember-forgot a {
   font-size: 0.75rem !important;
-  color: var(--text-muted) !important; /* Matches Remember me text color and other muted labels */
+  color: var(--text-muted) !important;
+  /* Matches Remember me text color and other muted labels */
   white-space: nowrap !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -1346,11 +1348,13 @@ footer .grid>div .flex.w-7.h-7 i {
 
 /* On mobile screens (max-width: 480px) adjust layout, paddings, and font sizes to ensure single-line text and clean alignment */
 @media (max-width: 480px) {
+
   /* Reduce padding on auth containers to maximize width on 368px screens */
   main.max-w-md {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
+
   .auth-card {
     padding: 1.5rem 1.25rem !important;
   }
@@ -1474,7 +1478,8 @@ footer .grid>div .flex.w-7.h-7 i {
 .auth-card a[href="register.html"],
 .auth-card a[href="login.html"],
 .auth-card a.text-\[\#0284C7\] {
-  color: #38BDF8 !important; /* Crisp Sky Blue in Dark Mode */
+  color: #38BDF8 !important;
+  /* Crisp Sky Blue in Dark Mode */
   font-weight: 600 !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -1483,7 +1488,8 @@ footer .grid>div .flex.w-7.h-7 i {
 [data-theme="light"] .auth-card a[href="register.html"],
 [data-theme="light"] .auth-card a[href="login.html"],
 [data-theme="light"] .auth-card a.text-\[\#0284C7\] {
-  color: #0369A1 !important; /* Deep Rich Blue for Maximum Contrast on White in Light Mode */
+  color: #0369A1 !important;
+  /* Deep Rich Blue for Maximum Contrast on White in Light Mode */
   font-weight: 600 !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -1493,7 +1499,8 @@ footer .grid>div .flex.w-7.h-7 i {
 .auth-card a[href="register.html"]:hover,
 .auth-card a[href="login.html"]:hover,
 .auth-card a.text-\[\#0284C7\]:hover {
-  color: #0D9488 !important; /* Brand Teal on hover */
+  color: #0D9488 !important;
+  /* Brand Teal on hover */
   text-decoration: underline !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -1502,7 +1509,8 @@ footer .grid>div .flex.w-7.h-7 i {
 [data-theme="light"] .auth-card a[href="register.html"]:hover,
 [data-theme="light"] .auth-card a[href="login.html"]:hover,
 [data-theme="light"] .auth-card a.text-\[\#0284C7\]:hover {
-  color: #0F766E !important; /* Deep Brand Teal on hover in Light Mode */
+  color: #0F766E !important;
+  /* Deep Brand Teal on hover in Light Mode */
   text-decoration: underline !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -2547,7 +2555,8 @@ footer .social-icon-btn:hover i,
 
 /* Dropdown Menu Container */
 .dropdown-menu {
-  background: rgba(14, 27, 23, 0.9) !important; /* glassmorphism dark */
+  background: rgba(14, 27, 23, 0.9) !important;
+  /* glassmorphism dark */
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border: 1px solid var(--card-border) !important;
@@ -2559,7 +2568,8 @@ footer .social-icon-btn:hover i,
 }
 
 [data-theme="light"] .dropdown-menu {
-  background: rgba(255, 255, 255, 0.95) !important; /* glassmorphism light */
+  background: rgba(255, 255, 255, 0.95) !important;
+  /* glassmorphism light */
   border-color: rgba(5, 150, 105, 0.15) !important;
   box-shadow: 0 10px 30px rgba(5, 150, 105, 0.15) !important;
 }
@@ -2591,7 +2601,8 @@ footer .social-icon-btn:hover i,
 
 /* Ensure the icon color inside theme dropdown items stays correct */
 .dropdown-item i {
-  color: var(--secondary) !important; /* beige/accent icon */
+  color: var(--secondary) !important;
+  /* beige/accent icon */
   font-size: 0.85rem !important;
   transition: all 0.2s ease !important;
   margin-right: 0 !important;
@@ -2619,7 +2630,15 @@ footer .social-icon-btn:hover i,
 [dir="rtl"] .sidebar-link,
 [dir="rtl"] button:not(.btn-close),
 [dir="rtl"] .dropdown-item,
-[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6, [dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] a {
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] a {
   text-align: right !important;
 }
 
@@ -2855,21 +2874,46 @@ body {
 [data-theme="light"] .card-title,
 [data-theme="light"] .font-heading,
 [data-theme="light"] .section-title,
-[data-theme="light"] .glass-panel h1, [data-theme="light"] .glass-panel h2, [data-theme="light"] .glass-panel h3, [data-theme="light"] .glass-panel h4, [data-theme="light"] .glass-panel h5, [data-theme="light"] .glass-panel h6,
-[data-theme="light"] .card h1, [data-theme="light"] .card h2, [data-theme="light"] .card h3, [data-theme="light"] .card h4, [data-theme="light"] .card h5, [data-theme="light"] .card h6,
-[data-theme="light"] [class*="card"] h1, [data-theme="light"] [class*="card"] h2, [data-theme="light"] [class*="card"] h3, [data-theme="light"] [class*="card"] h4, [data-theme="light"] [class*="card"] h5, [data-theme="light"] [class*="card"] h6,
-[data-theme="light"] section h1, [data-theme="light"] section h2, [data-theme="light"] section h3, [data-theme="light"] section h4, [data-theme="light"] section h5, [data-theme="light"] section h6 {
-  color: #0F172A !important; /* Deep Dark Slate - Never white in light mode */
+[data-theme="light"] .glass-panel h1,
+[data-theme="light"] .glass-panel h2,
+[data-theme="light"] .glass-panel h3,
+[data-theme="light"] .glass-panel h4,
+[data-theme="light"] .glass-panel h5,
+[data-theme="light"] .glass-panel h6,
+[data-theme="light"] .card h1,
+[data-theme="light"] .card h2,
+[data-theme="light"] .card h3,
+[data-theme="light"] .card h4,
+[data-theme="light"] .card h5,
+[data-theme="light"] .card h6,
+[data-theme="light"] [class*="card"] h1,
+[data-theme="light"] [class*="card"] h2,
+[data-theme="light"] [class*="card"] h3,
+[data-theme="light"] [class*="card"] h4,
+[data-theme="light"] [class*="card"] h5,
+[data-theme="light"] [class*="card"] h6,
+[data-theme="light"] section h1,
+[data-theme="light"] section h2,
+[data-theme="light"] section h3,
+[data-theme="light"] section h4,
+[data-theme="light"] section h5,
+[data-theme="light"] section h6 {
+  color: #0F172A !important;
+  /* Deep Dark Slate - Never white in light mode */
 }
 
 /* 4. Light Mode Body Paragraphs & Subtitles */
 [data-theme="light"] p,
 [data-theme="light"] li,
 [data-theme="light"] label,
-[data-theme="light"] .glass-panel p, [data-theme="light"] .glass-panel span:not(.badge),
-[data-theme="light"] .card p, [data-theme="light"] .card span:not(.badge),
-[data-theme="light"] [class*="card"] p, [data-theme="light"] [class*="card"] span:not(.badge) {
-  color: #334155 !important; /* Dark Slate 700 */
+[data-theme="light"] .glass-panel p,
+[data-theme="light"] .glass-panel span:not(.badge),
+[data-theme="light"] .card p,
+[data-theme="light"] .card span:not(.badge),
+[data-theme="light"] [class*="card"] p,
+[data-theme="light"] [class*="card"] span:not(.badge) {
+  color: #334155 !important;
+  /* Dark Slate 700 */
 }
 
 /* Muted / Secondary small text in Light Mode */
@@ -2888,7 +2932,8 @@ body {
 [data-theme="light"] .text-slate-400,
 [data-theme="light"] .text-gray-500,
 [data-theme="light"] .text-slate-500 {
-  color: #475569 !important; /* Dark Slate 600 */
+  color: #475569 !important;
+  /* Dark Slate 600 */
 }
 
 /* Accent Clinical Teal & Sky Blue text in Light Mode */
@@ -2898,7 +2943,8 @@ body {
 [data-theme="light"] .text-teal-400,
 [data-theme="light"] .text-teal-500,
 [data-theme="light"] .text-teal-600 {
-  color: #0F766E !important; /* Deep Clinical Teal for Rich Contrast */
+  color: #0F766E !important;
+  /* Deep Clinical Teal for Rich Contrast */
 }
 
 [data-theme="light"] .text-\[\#0284C7\],
@@ -2906,7 +2952,8 @@ body {
 [data-theme="light"] .text-sky-400,
 [data-theme="light"] .text-sky-500,
 [data-theme="light"] .text-sky-600 {
-  color: #0369A1 !important; /* Deep Sky Cyan for Rich Contrast */
+  color: #0369A1 !important;
+  /* Deep Sky Cyan for Rich Contrast */
 }
 
 /* Solid CTA buttons in Light Mode keep white text */
@@ -2943,17 +2990,35 @@ body {
   color: #F8FAFC !important;
 }
 
-[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6,
-[data-theme="dark"] .glass-panel h1, [data-theme="dark"] .glass-panel h2, [data-theme="dark"] .glass-panel h3, [data-theme="dark"] .glass-panel h4, [data-theme="dark"] .glass-panel h5, [data-theme="dark"] .glass-panel h6,
-[data-theme="dark"] .card h1, [data-theme="dark"] .card h2, [data-theme="dark"] .card h3, [data-theme="dark"] .card h4, [data-theme="dark"] .card h5, [data-theme="dark"] .card h6 {
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .glass-panel h1,
+[data-theme="dark"] .glass-panel h2,
+[data-theme="dark"] .glass-panel h3,
+[data-theme="dark"] .glass-panel h4,
+[data-theme="dark"] .glass-panel h5,
+[data-theme="dark"] .glass-panel h6,
+[data-theme="dark"] .card h1,
+[data-theme="dark"] .card h2,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .card h5,
+[data-theme="dark"] .card h6 {
   color: #FFFFFF !important;
 }
 
-[data-theme="dark"] p, [data-theme="dark"] li {
+[data-theme="dark"] p,
+[data-theme="dark"] li {
   color: #E2E8F0 !important;
 }
 
-[data-theme="dark"] .text-gray-400, [data-theme="dark"] .text-slate-400, [data-theme="dark"] .text-[#94A3B8] {
+[data-theme="dark"] .text-gray-400,
+[data-theme="dark"] .text-slate-400,
+[data-theme="dark"] .text-[#94A3B8] {
   color: #CBD5E1 !important;
 }
 
@@ -3085,18 +3150,18 @@ a.border-\[\#0D9488\] {
   #testimonialCarousel {
     padding-bottom: 72px !important;
   }
-  
+
   #testimonialCarousel .carousel-control-prev,
   #testimonialCarousel .carousel-control-next {
     top: auto;
     bottom: 20px;
     transform: none;
   }
-  
+
   #testimonialCarousel .carousel-control-prev {
     left: calc(50% - 50px) !important;
   }
-  
+
   #testimonialCarousel .carousel-control-next {
     right: calc(50% - 50px) !important;
   }
@@ -3106,10 +3171,12 @@ a.border-\[\#0D9488\] {
 .group div.absolute a {
   color: #D1D5DB !important;
 }
+
 .group div.absolute a:hover {
   color: var(--secondary) !important;
   background-color: rgba(255, 255, 255, 0.06) !important;
 }
+
 .group div.absolute a.text-\[\#06B6D4\],
 [data-theme="light"] .group div.absolute a.text-\[\#06B6D4\] {
   color: var(--secondary) !important;
@@ -3200,8 +3267,8 @@ footer ul li a:hover {
 }
 
 /* Contact info list item links (Phone / Email) hover color & icon animation */
-.premium-footer li:hover > div,
-footer li:hover > div {
+.premium-footer li:hover>div,
+footer li:hover>div {
   transform: scale(1.08);
   transition: transform 0.25s ease;
 }
@@ -3302,6 +3369,7 @@ footer .brand-logo:hover {
    ========================================================================== */
 
 @media (max-width: 1023px) {
+
   #mobile-menu a[href="register.html"],
   #mobile-menu .mobile-signup-btn {
     max-width: 280px !important;
@@ -3686,9 +3754,20 @@ nav #theme-toggle.header-theme-switch,
 }
 
 /* Ensure text alignment classes work identically in all themes */
-.table th.text-right, .table td.text-right { text-align: right !important; }
-.table th.text-left, .table td.text-left { text-align: left !important; }
-.table th.text-center, .table td.text-center { text-align: center !important; }
+.table th.text-right,
+.table td.text-right {
+  text-align: right !important;
+}
+
+.table th.text-left,
+.table td.text-left {
+  text-align: left !important;
+}
+
+.table th.text-center,
+.table td.text-center {
+  text-align: center !important;
+}
 
 /* 4. Doctors Page Consult Button Hover Effect */
 .book-consult-btn {
@@ -3741,9 +3820,9 @@ nav #theme-toggle.header-theme-switch,
 /* 2. Health Blog Table & Pill Contrast Fixes (Dark & Light Mode) */
 /* Dark Mode Table Styling */
 [data-theme="dark"] .outcome-table,
-[data-theme="dark"] .outcome-table > tbody,
-[data-theme="dark"] .outcome-table > tbody > tr,
-[data-theme="dark"] .outcome-table > tbody > tr > td {
+[data-theme="dark"] .outcome-table>tbody,
+[data-theme="dark"] .outcome-table>tbody>tr,
+[data-theme="dark"] .outcome-table>tbody>tr>td {
   background-color: transparent !important;
   background: transparent !important;
   color: #F8FAFC !important;
@@ -3756,9 +3835,9 @@ nav #theme-toggle.header-theme-switch,
 
 /* Light Mode Table Styling */
 [data-theme="light"] .outcome-table,
-[data-theme="light"] .outcome-table > tbody,
-[data-theme="light"] .outcome-table > tbody > tr,
-[data-theme="light"] .outcome-table > tbody > tr > td {
+[data-theme="light"] .outcome-table>tbody,
+[data-theme="light"] .outcome-table>tbody>tr,
+[data-theme="light"] .outcome-table>tbody>tr>td {
   background-color: #FFFFFF !important;
   color: #0F172A !important;
 }
@@ -3878,4 +3957,250 @@ button.active-services-btn {
 [data-theme="light"] #mobile-menu a.mobile-active-item i {
   color: #0F766E !important;
   opacity: 1 !important;
+}
+
+/* ==========================================================================
+   Home Page 2 Redesigned Hero Custom Styles (Light Mode & RTL Polish)
+   ========================================================================== */
+[data-theme="light"] .home2-hero-wrapper {
+  background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%) !important;
+}
+
+[data-theme="light"] .home2-hero-wrapper h1 {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .home2-hero-desc {
+  color: #334155 !important;
+  font-weight: 450 !important;
+}
+
+[data-theme="light"] .home2-finder-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] #symptom-select {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] #procedure-result-box {
+  background-color: #F1F5F9 !important;
+  border-color: rgba(15, 118, 110, 0.3) !important;
+}
+
+[data-theme="light"] #procedure-recommendation {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .home2-metrics-ribbon {
+  border-top-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme="light"] .home2-metrics-ribbon p.font-bold {
+  background: linear-gradient(135deg, #0F172A 0%, #0369A1 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .home2-metrics-ribbon p.text-\[\#94A3B8\] {
+  color: #475569 !important;
+}
+
+/* RTL Support for Home 2 Hero */
+[dir="rtl"] .home2-hero-wrapper .text-left {
+  text-align: right !important;
+}
+
+[dir="rtl"] .home2-hero-wrapper .ltr\:text-left {
+  text-align: right !important;
+}
+
+/* ==========================================================================
+   Header Theme Switch Pill & Global Light Mode Polish
+   ========================================================================== */
+.header-theme-switch {
+  position: relative !important;
+  width: 54px !important;
+  height: 28px !important;
+  border-radius: 9999px !important;
+  background-color: #0D1B2A !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 2px 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.header-theme-switch:hover {
+  border-color: #0D9488 !important;
+  box-shadow: 0 0 12px rgba(13, 148, 136, 0.3) !important;
+}
+
+#header-theme-thumb {
+  position: absolute !important;
+  top: 2px !important;
+  left: 3px !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, #0D9488, #0284C7) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="light"] .header-theme-switch {
+  background-color: #E2E8F0 !important;
+  border-color: #CBD5E1 !important;
+}
+
+[data-theme="light"] #header-theme-thumb {
+  transform: translateX(24px) !important;
+  background: linear-gradient(135deg, #0F766E, #0369A1) !important;
+}
+
+[dir="rtl"] #header-theme-thumb {
+  left: auto !important;
+  right: 3px !important;
+}
+
+[dir="rtl"][data-theme="light"] #header-theme-thumb {
+  transform: translateX(-24px) !important;
+}
+
+/* Global Light Mode Overrides for Tailwind Utility Color Classes */
+[data-theme="light"] body {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .bg-\[\#081018\] {
+  background-color: #F8FAFC !important;
+}
+
+[data-theme="light"] .bg-\[\#0D1B2A\],
+[data-theme="light"] .bg-\[\#0D1B2A\]\/40,
+[data-theme="light"] .bg-\[\#0D1B2A\]\/60,
+[data-theme="light"] .bg-\[\#0D1B2A\]\/75,
+[data-theme="light"] .bg-\[\#0D1B2A\]\/90 {
+  background-color: #FFFFFF !important;
+}
+
+[data-theme="light"] .bg-\[\#0B1726\] {
+  background-color: #F1F5F9 !important;
+}
+
+[data-theme="light"] .text-\[\#F8FAFC\] {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .text-\[\#CBD5E1\] {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .text-\[\#94A3B8\] {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .border-gray-800,
+[data-theme="light"] .border-gray-900,
+[data-theme="light"] .border-gray-700,
+[data-theme="light"] .border-gray-700\/60,
+[data-theme="light"] .border-gray-700\/80,
+[data-theme="light"] .border-gray-800\/80,
+[data-theme="light"] .border-gray-800\/90 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #0F172A !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .glass-navbar {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+[data-theme="light"] .home1-hero-wrapper {
+  background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%) !important;
+}
+
+[data-theme="light"] .home1-hero-wrapper h1 {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .home1-hero-wrapper label {
+  color: #334155 !important;
+}
+
+/* Ensure navbar toggle buttons catch all click events */
+.header-theme-switch *,
+#theme-toggle *,
+#rtl-toggle *,
+#theme-toggle-mobile *,
+#rtl-toggle-mobile * {
+  pointer-events: none;
+}
+
+/* Comprehensive RTL (Right-to-Left) System Rules */
+[dir="rtl"] body {
+  direction: rtl;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+[dir="rtl"] .home2-hero-wrapper .text-left,
+[dir="rtl"] .home1-hero-wrapper .text-left {
+  text-align: right !important;
+}
+
+/* Strict 368px Viewport Right-Side Overflow Guard */
+@media (max-width: 480px) {
+
+  html,
+  body,
+  .home2-hero-wrapper,
+  .home1-hero-wrapper {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .glass-panel,
+  .home2-finder-card,
+  .home2-metrics-ribbon {
+    max-w-full !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Prevent floating glass badges extending past right viewport border */
+  .home2-hero-wrapper .absolute.-top-3,
+  .home2-hero-wrapper .absolute.-bottom-3 {
+    right: 4px !important;
+    max-width: calc(100% - 16px) !important;
+  }
 }
