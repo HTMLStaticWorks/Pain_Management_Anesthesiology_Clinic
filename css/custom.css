@@ -3711,6 +3711,41 @@ nav #theme-toggle.header-theme-switch,
 }
 
 /* 2. Procedure Relief & Outcome Metrics Dark Mode Contrast Fix */
+/* Force Bootstrap's white table background fully transparent in dark mode */
+[data-theme="dark"] #articles-section .table,
+[data-theme="dark"] #articles-section table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: #F8FAFC !important;
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.04) !important;
+  background-color: transparent !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] #articles-section .table thead,
+[data-theme="dark"] #articles-section .table tbody,
+[data-theme="dark"] #articles-section table thead,
+[data-theme="dark"] #articles-section table tbody {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+[data-theme="dark"] #articles-section .table thead tr,
+[data-theme="dark"] #articles-section .table tbody tr,
+[data-theme="dark"] #articles-section table thead tr,
+[data-theme="dark"] #articles-section table tbody tr {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+[data-theme="dark"] #articles-section .table thead th,
+[data-theme="dark"] #articles-section .table tbody td,
+[data-theme="dark"] #articles-section table thead th,
+[data-theme="dark"] #articles-section table tbody td {
+  background-color: transparent !important;
+  background: transparent !important;
+  --bs-table-bg: transparent !important;
+}
+
 [data-theme="dark"] .outcome-row td,
 [data-theme="dark"] .table td {
   color: #F8FAFC !important;
@@ -3809,6 +3844,9 @@ nav #theme-toggle.header-theme-switch,
    ========================================================================== */
 
 /* 1. Specialized Program Options Recommended Badge Light Mode Contrast Fix */
+/* High-specificity selectors beat the global glass-panel span & .text-white overrides */
+[data-theme="light"] span.program-recommended-badge,
+[data-theme="light"] .glass-panel span.program-recommended-badge,
 [data-theme="light"] .program-recommended-badge {
   background-color: #0F766E !important;
   color: #FFFFFF !important;
@@ -3828,9 +3866,15 @@ nav #theme-toggle.header-theme-switch,
   color: #F8FAFC !important;
 }
 
-[data-theme="dark"] .outcome-row span.font-bold,
-[data-theme="dark"] .outcome-row td span {
+/* Only apply near-white to non-pill (plain text) spans; pill badges keep their own color */
+[data-theme="dark"] .outcome-row span.font-bold:not(.rounded-full),
+[data-theme="dark"] .outcome-row td span:not(.rounded-full) {
   color: #F8FAFC !important;
+}
+
+/* Ensure pill badge text colors stay vibrant in dark mode */
+[data-theme="dark"] .outcome-row td span.rounded-full {
+  color: inherit !important;
 }
 
 /* Light Mode Table Styling */
@@ -3848,17 +3892,24 @@ nav #theme-toggle.header-theme-switch,
 }
 
 /* Light Mode Pills inside Outcome Metrics */
+/* Specificity (0,2,3): matches [data-theme="light"] table td span.rounded-full at line ~1761
+   and wins via later cascade position — overrides the catch-all rule for teal pills */
+[data-theme="light"] table td span.outcome-pill-teal,
 [data-theme="light"] .outcome-pill-teal {
   background-color: #E6F4F1 !important;
   color: #047857 !important;
   border: 1px solid #A7F3D0 !important;
+  border-color: #A7F3D0 !important;
   font-weight: 700 !important;
 }
 
+/* Specificity (0,2,3): same boost for sky/blue duration pills */
+[data-theme="light"] table td span.outcome-pill-sky,
 [data-theme="light"] .outcome-pill-sky {
   background-color: #E0F2FE !important;
   color: #0369A1 !important;
   border: 1px solid #BAE6FD !important;
+  border-color: #BAE6FD !important;
   font-weight: 700 !important;
 }
 
