@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'index.html': 'fa-solid fa-house',
     'home-2.html': 'fa-solid fa-house-chimney-medical',
     'about.html': 'fa-solid fa-circle-info',
+    'services.html': 'fa-solid fa-hand-holding-medical',
     'medicines.html': 'fa-solid fa-pills',
     'prescriptions.html': 'fa-solid fa-prescription',
     'health-blog.html': 'fa-solid fa-newspaper',
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPage = 'index.html';
   }
 
-  const servicePages = ['medicines.html', 'prescriptions.html', 'health-blog.html'];
+  const servicePages = ['medicines.html', 'prescriptions.html', 'health-blog.html', 'services.html'];
 
   // Highlight standard desktop & mobile nav links
   const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.add('text-[#0D9488]', 'font-bold', 'active', 'active-nav-link');
         link.style.color = '#0D9488';
 
-        // Dropdown item styling in desktop dropdown
+        // Dropdown item styling in desktop dropdown (if present)
         if (link.closest('.group') || link.classList.contains('dropdown-item')) {
           link.classList.add('bg-[#0D9488]/15', 'text-[#0D9488]', 'font-semibold', 'dropdown-active-item');
         }
@@ -218,24 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Highlight Services parent dropdown button & mobile header if on any services page
+  // Highlight Services nav link when on any services-related page
   if (servicePages.includes(currentPage)) {
-    // Desktop Services Dropdown Button
-    const servicesBtns = document.querySelectorAll('.services-dropdown-btn, nav button');
-    servicesBtns.forEach(btn => {
-      if (btn.textContent.includes('Services')) {
-        btn.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]');
-        btn.classList.add('text-[#0D9488]', 'font-semibold', 'active-services-btn');
-      }
-    });
-
-    // Mobile Services Header
-    const mobileServicesHeaders = document.querySelectorAll('.mobile-services-header, #mobile-menu span');
-    mobileServicesHeaders.forEach(header => {
-      if (header.textContent.trim().toLowerCase() === 'services') {
-        header.classList.remove('text-[#94A3B8]');
-        header.classList.add('text-[#0D9488]', 'font-bold');
-      }
+    const servicesNavLinks = document.querySelectorAll('nav a[href="services.html"], #mobile-menu a[href="services.html"]');
+    servicesNavLinks.forEach(link => {
+      link.classList.remove('text-[#CBD5E1]', 'text-[#D1D5DB]', 'text-[#F3F4F6]', 'text-gray-300', 'text-gray-400', 'font-medium');
+      link.classList.add('text-[#0D9488]', 'font-bold', 'active', 'active-nav-link');
+      link.style.color = '#0D9488';
     });
   }
 
